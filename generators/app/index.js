@@ -27,6 +27,20 @@ module.exports = yeoman.generators.Base.extend({
       this.props.apiAssemblyGuid = guid.v4();
       done();
     }.bind(this));
+
+    this.on('end', function () {
+      this.log(yosay(
+        'All done!' + chalk.red('There are a few things you still need to do....') +
+        '\n 1. Open the solution.' +
+        '\n 2. Right click on the solution file' + 
+        '\n 3. Manage NuGet Packages' +
+        '\n 4. Click on the restore button on the right of the yellow bar.' + 
+        '\n    This will pull down all of your dependencies from NuGet.' +
+        '\n 5. Build the solution.' + 
+        '\n 6. Open the Package Manager Console, type in \"update-database\".' +
+        '\n 7. You are now ready to use your API!  ENJOY!'
+        ));
+    });
   },
 
   createDirectories: function () {
@@ -246,9 +260,5 @@ module.exports = yeoman.generators.Base.extend({
         );
     }
 
-  },
-
-  install: function () {
-    this.installDependencies();
   }
 });
