@@ -201,7 +201,7 @@ module.exports = yeoman.generators.Base.extend({
     properties: function () {
       this.fs.copyTpl(
         this.templatePath('api/Properties/_assemblyinfo.cs'),
-        this.destinationPath(path.join(this.props.applicationName, 'Properties/AssemblyInfo.cs',
+        this.destinationPath(path.join(this.props.applicationName, 'Properties/AssemblyInfo.cs'),
           {
             applicationName: this.props.applicationName,
             apiProjectGuid: this.props.apiAssemblyGuid
