@@ -234,6 +234,16 @@ module.exports = yeoman.generators.Base.extend({
         );
     },
     rootFiles: function () {
+      this.loggingConfig = '<nlog xmlns="http://www.nlog-project.org/schemas/NLog.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">' +
+      '<variable name="appTitle" value="' + this.appData.applicationName + '" />' +
+      '<variable name="logFilePath" value="${basedir}/${appTitle}.log" />' +
+      '<targets async="true">' +
+      '<target name="file" xsi:type="File" fileName="${logFilePath}" layout="${longdate} ${level:upperCase=true}: ${message}${newline}(${stacktrace}) ${exception:format=ToString}" />' +
+      '</targets>' +
+      '<rules>' +
+      '<logger name="defaultLogger" minlevel="Warn" writeTo="file" />' +
+      '</rules>' +
+      '</nlog>';
       this.fs.copyTpl(
         this.templatePath('api/_packages.config'),
         this.destinationPath(this.appDirectory + 'Packages.config')
@@ -244,7 +254,12 @@ module.exports = yeoman.generators.Base.extend({
         );
       this.fs.copyTpl(
         this.templatePath('api/_web.config'),
-        this.destinationPath(this.appDirectory + 'Web.config'), { applicationName: this.appData.applicationName, dbServerName: this.appData.dbServerName}
+        this.destinationPath(this.appDirectory + 'Web.config'),
+        {
+          applicationName: this.appData.applicationName,
+          dbServerName: this.appData.dbServerName,
+          loggingConfig: this.loggingConfig
+        }
         );
       this.fs.copyTpl(
         this.templatePath('api/_web.debug.config'),
