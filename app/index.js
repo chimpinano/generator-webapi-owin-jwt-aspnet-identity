@@ -156,7 +156,7 @@ module.exports = yeoman.generators.Base.extend({
     },
     extensions: function () {
       this.fs.copyTpl(
-        this.templatePath('api/Extensions/_exceptionExtensions.cs'),
+        this.templatePath('api/Extensions/_exceptionextensions.cs'),
         this.destinationPath(this.extensionsDirectory + 'ExceptionExtensions.cs'), { applicationName: this.props.applicationName }
         );
     },
