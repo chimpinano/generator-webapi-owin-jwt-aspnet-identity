@@ -54,24 +54,24 @@ module.exports = yeoman.generators.Base.extend({
     this.exceptionsDirectory = this.appDirectory + 'Exceptions/';
     this.filtersDirectory = this.appDirectory + 'Filters/';
     this.migrationsDirectory = this.appDirectory + 'Migrations/';
-    this.modelsDirector = this.appDirectory + 'Models/';
+    this.modelsDirectory = this.appDirectory + 'Models/';
     this.responseDirectory = this.modelsDirectory + 'Response/';
     this.requestDirectory = this.modelsDirectory + 'Request/';
     this.propertiesDirectory = this.appDirectory + 'Properties/';
 
-    this.mkdir(this.destinationRoot() + '/packages');
-    this.mkdir(this.appStart);
-    this.mkdir(this.authenticationDirectory);
-    this.mkdir(this.emailTemplatesDirectory);
-    this.mkdir(this.autoMappingDirectory);
-    this.mkdir(this.controllersDirectory);
-    this.mkdir(this.exceptionsDirectory);
-    this.mkdir(this.filtersDirectory);
-    this.mkdir(this.migrationsDirectory);
-    this.mkdir(this.modelsDirectory);
-    this.mkdir(this.responseDirectory);
-    this.mkdir(this.requestDirectory);
-    this.mkdir(this.propertiesDirectory);
+    this.mkdirp(this.destinationRoot() + '/packages');
+    this.mkdirp(this.appStart);
+    this.mkdirp(this.authenticationDirectory);
+    this.mkdirp(this.emailTemplatesDirectory);
+    this.mkdirp(this.autoMappingDirectory);
+    this.mkdirp(this.controllersDirectory);
+    this.mkdirp(this.exceptionsDirectory);
+    this.mkdirp(this.filtersDirectory);
+    this.mkdirp(this.migrationsDirectory);
+    this.mkdirp(this.modelsDirectory);
+    this.mkdirp(this.responseDirectory);
+    this.mkdirp(this.requestDirectory);
+    this.mkdirp(this.propertiesDirectory);
   },
 
   writing: {
