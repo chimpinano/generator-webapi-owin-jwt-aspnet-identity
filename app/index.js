@@ -259,6 +259,5 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath(this.packagesDirectory + 'repositories.config', { applicationName: this.props.applicationName })
         );
     }
-
   }
 });
