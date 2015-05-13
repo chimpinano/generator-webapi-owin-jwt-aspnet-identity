@@ -5,7 +5,7 @@ var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
 var os = require('os');
 
-describe('generator-webapi-owin-jwt-aspnet-identity:app', function () {
+describe('webapi-owin-jwt-aspnet-identity:app', function () {
   beforeEach(function (done) {
     helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
       if (err) {
@@ -64,6 +64,9 @@ describe('generator-webapi-owin-jwt-aspnet-identity:app', function () {
 
     helpers.mockPrompt(this.app, {
       'applicationName': 'MyApplication'
+    });
+    helpers.mockPrompt(this.app, {
+      'dbServerName':'.\sqlexpress'
     });
     this.app.options['skip-install'] = true;
     this.app.run({}, function () {

@@ -8,7 +8,6 @@ var mkdirp = require('mkdirp');
 
 module.exports = yeoman.generators.Base.extend({
   init: function () {
-    var done = this.async();
     this.on('end', function () {
       this.log(yosay(
         'All done!' + chalk.red('There are a few things you still need to do....') +
@@ -23,7 +22,6 @@ module.exports = yeoman.generators.Base.extend({
         ));
     });
     this.pkg = require('../package.json');
-    done();
   },
 
   prompting: function () {
@@ -56,7 +54,6 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   createDirectories: function () {
-    var done = this.async();
     this.packagesDirectory = this.destinationRoot() + '/packages/';
     this.appDirectory = this.destinationRoot() + '/' + this.appData.applicationName + '/';
     this.appStart = this.appDirectory + 'App_Start/';
@@ -86,11 +83,9 @@ module.exports = yeoman.generators.Base.extend({
     mkdirp(this.responseDirectory);
     mkdirp(this.requestDirectory);
     mkdirp(this.propertiesDirectory);
-    done();
   },
 
   writing: function () {
-    var done = this.async();
     this.fs.copyTpl(
       this.templatePath('api/App_Start/_webapiconfig.cs'),
       this.destinationPath(this.appStart + 'WebApiConfig.cs'), { applicationName: this.appData.applicationName }
@@ -266,6 +261,5 @@ module.exports = yeoman.generators.Base.extend({
       this.templatePath('packages/_repositories.config'),
       this.destinationPath(this.packagesDirectory + 'repositories.config'), { applicationName: this.appData.applicationName }
       );
-    done();
   }
 });
