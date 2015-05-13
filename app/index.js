@@ -220,7 +220,7 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath(this.propertiesDirectory + 'AssemblyInfo.cs'),
           {
             applicationName: this.props.applicationName,
-            apiProjectGuid: this.props.apiAssemblyGuid
+            apiAssemblyGuid: this.props.apiAssemblyGuid
           }
         );
     },
