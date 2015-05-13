@@ -225,7 +225,7 @@ module.exports = yeoman.generators.Base.extend({
         );
     },
     rootFiles: function () {
-      this.fs.copy(
+      this.fs.copyTpl(
         this.templatePath('api/_packages.config'),
         this.destinationPath(this.appDirectory + 'Packages.config')
         );
@@ -237,11 +237,11 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('api/_web.config'),
         this.destinationPath(this.appDirectory + 'Web.config'), { applicationName: this.props.applicationName }
         );
-      this.fs.copy(
+      this.fs.copyTpl(
         this.templatePath('api/_web.debug.config'),
         this.destinationPath(this.appDirectory + 'Web.Debug.config')
         );
-      this.fs.copy(
+      this.fs.copyTpl(
         this.templatePath('api/_web.release.config'),
         this.destinationPath(this.appDirectory + 'Web.Release.config')
         );
