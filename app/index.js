@@ -127,7 +127,7 @@ module.exports = yeoman.generators.Base.extend({
         );
       this.fs.copyTpl(
         this.templatePath('api/AutoMapping/_userprofile.cs'),
-        this.destinationPath(this.autoMappingDirectory + 'UserProfile.cs')
+        this.destinationPath(this.autoMappingDirectory + 'UserProfile.cs'), { applicationName: this.props.applicationName }
         );
     },
     controllers: function () {
