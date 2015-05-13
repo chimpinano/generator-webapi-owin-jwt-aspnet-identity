@@ -62,6 +62,7 @@ module.exports = yeoman.generators.Base.extend({
     this.autoMappingDirectory = this.appDirectory + 'AutoMapping/';
     this.controllersDirectory = this.appDirectory + 'Controllers/';
     this.exceptionsDirectory = this.appDirectory + 'Exceptions/';
+       this.extensionsDirectory = this.appDirectory + 'Extensions/';
     this.filtersDirectory = this.appDirectory + 'Filters/';
     this.migrationsDirectory = this.appDirectory + 'Migrations/';
     this.modelsDirectory = this.appDirectory + 'Models/';
@@ -251,7 +252,7 @@ module.exports = yeoman.generators.Base.extend({
       );
     this.fs.copyTpl(
       this.templatePath('_app.sln'),
-      this.destinationPath(this.appData.applicationName + '.sln'),
+      this.destinationPath(this.destinationRoot() + '/' + this.appData.applicationName + '.sln'),
       {
         applicationName: this.appData.applicationName,
         apiProjectGuid: this.appData.apiProjectGuid
