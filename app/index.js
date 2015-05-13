@@ -59,7 +59,8 @@ module.exports = yeoman.generators.Base.extend({
     this.requestDirectory = this.modelsDirectory + 'Request/';
     this.propertiesDirectory = this.appDirectory + 'Properties/';
 
-    this.mkdirp(this.destinationRoot() + '/packages');
+    this.mkdirp(this.packagesDirectory);
+    this.mkdrip(this.appDirectory);
     this.mkdirp(this.appStart);
     this.mkdirp(this.authenticationDirectory);
     this.mkdirp(this.emailTemplatesDirectory);
