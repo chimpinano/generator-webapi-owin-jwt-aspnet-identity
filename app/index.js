@@ -18,12 +18,10 @@ module.exports = yeoman.generators.Base.extend({
       type: 'input',
       name: 'applicationName',
       message: 'What is the name of your application?',
-      default: true,
+      default: "My Application",
       required: true
     }], function (props) {
         this.props = props;
-        this.props.applicationName = props.applicationName;
-        this.log(yosay(this.props.applicationName));
         this.props.apiProjectGuid = guid.v4();
         this.props.apiAssemblyGuid = guid.v4();
 
