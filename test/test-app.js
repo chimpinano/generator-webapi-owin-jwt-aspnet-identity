@@ -13,7 +13,7 @@ describe('generator-webapi-owin-jwt-aspnet-identity:app', function () {
       }
 
       this.app = helpers.createGenerator('generator-webapi-owin-jwt-aspnet-identity:app', [
-        '../../app'
+        '../app'
       ]);
       done();
     }.bind(this));
