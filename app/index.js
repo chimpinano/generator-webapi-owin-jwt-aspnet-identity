@@ -47,7 +47,7 @@ module.exports = yeoman.generators.Base.extend({
   createDirectories: function () {
     this.packagesDirectory = this.destinationRoot() + '/packages/';
     this.appDirectory = this.destinationRoot() + '/' + this.props.applicationName + '/';
-    this.appStart = 'App_Start/';
+    this.appStart = this.appDirectory + 'App_Start/';
     this.authenticationDirectory = this.appDirectory + 'Authentication/';
     this.emailTemplatesDirectory = this.authenticationDirectory + 'EmailTemplates/';
     this.autoMappingDirectory = this.appDirectory + 'AutoMapping/';
