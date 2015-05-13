@@ -5,14 +5,14 @@ var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
 var os = require('os');
 
-describe('webapi-microsoftowin-jwt-aspnetidentity:app', function () {
+describe('generator-webapi-owin-jwt-aspnet-identity:app', function () {
   beforeEach(function (done) {
     helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
       if (err) {
         return done(err);
       }
 
-      this.app = helpers.createGenerator('webapi-microsoftowin-jwt-aspnetidentity:app', [
+      this.app = helpers.createGenerator('generator-webapi-owin-jwt-aspnet-identity:app', [
         '../../app'
       ]);
       done();
