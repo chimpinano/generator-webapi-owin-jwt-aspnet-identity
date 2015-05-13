@@ -68,20 +68,20 @@ module.exports = yeoman.generators.Base.extend({
     this.requestDirectory = this.modelsDirectory + 'Request/';
     this.propertiesDirectory = this.appDirectory + 'Properties/';
 
-    this.mkdirp(this.packagesDirectory);
-    this.mkdirp(this.appDirectory);
-    this.mkdirp(this.appStart);
-    this.mkdirp(this.authenticationDirectory);
-    this.mkdirp(this.emailTemplatesDirectory);
-    this.mkdirp(this.autoMappingDirectory);
-    this.mkdirp(this.controllersDirectory);
-    this.mkdirp(this.exceptionsDirectory);
-    this.mkdirp(this.filtersDirectory);
-    this.mkdirp(this.migrationsDirectory);
-    this.mkdirp(this.modelsDirectory);
-    this.mkdirp(this.responseDirectory);
-    this.mkdirp(this.requestDirectory);
-    this.mkdirp(this.propertiesDirectory);
+    mkdirp(this.packagesDirectory);
+    mkdirp(this.appDirectory);
+    mkdirp(this.appStart);
+    mkdirp(this.authenticationDirectory);
+    mkdirp(this.emailTemplatesDirectory);
+    mkdirp(this.autoMappingDirectory);
+    mkdirp(this.controllersDirectory);
+    mkdirp(this.exceptionsDirectory);
+    mkdirp(this.filtersDirectory);
+    mkdirp(this.migrationsDirectory);
+    mkdirp(this.modelsDirectory);
+    mkdirp(this.responseDirectory);
+    mkdirp(this.requestDirectory);
+    mkdirp(this.propertiesDirectory);
   },
 
   writing: {
