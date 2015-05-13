@@ -61,17 +61,7 @@ describe('webapi-owin-jwt-aspnet-identity:app', function () {
       'MyApplication.API/Web.Debug.config',
       'MyApplication.API/Web.Release.config'
     ];
-
-    helpers.mockPrompt(this.app, {
-      'applicationName': 'MyApplication'
-    });
-    helpers.mockPrompt(this.app, {
-      'dbServerName':'.\sqlexpress'
-    });
-    this.app.options['skip-install'] = true;
-    this.app.run({}, function () {
-      helpers.assertFile(expected);
-      done();
-    });
-  }); 
+    helpers.assertFile(expected);
+    done();
+  });
 });
