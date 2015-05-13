@@ -78,7 +78,7 @@ module.exports = yeoman.generators.Base.extend({
   writing: {
     appStart: function () {
       this.fs.copyTpl(
-        this.templatePath('api/AppStart/_webapiconfig.cs'),
+        this.templatePath('api/App_Start/_webapiconfig.cs'),
         this.destinationPath(this.appStart + 'WebApiConfig.cs'), { applicationName: this.props.applicationName }
         );
     },
