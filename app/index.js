@@ -7,10 +7,25 @@ var _s = require('underscore.string');
 var mkdirp = require('mkdirp');
 
 module.exports = yeoman.generators.Base.extend({
+  init: function () {
+    this.on('end', function () {
+      this.log(yosay(
+        'All done!' + chalk.red('There are a few things you still need to do....') +
+        '\n 1. Open the solution.' +
+        '\n 2. Right click on the solution file' +
+        '\n 3. Manage NuGet Packages' +
+        '\n 4. Click on the restore button on the right of the yellow bar.' +
+        '\n    This will pull down all of your dependencies from NuGet.' +
+        '\n 5. Build the solution.' +
+        '\n 6. Open the Package Manager Console, type in \"update-database\".' +
+        '\n 7. You are now ready to use your API!  ENJOY!'
+        ));
+    });
+    this.pkg = require('../package.json');
+  },
+
   prompting: function () {
     var done = this.async();
-
-
     // Have Yeoman greet the user.
     this.log(yosay(
       'Welcome to the super ' + chalk.red('Web API Microsoft.Owin JWT ASP.NET Identity application') + ' generator!'
@@ -36,20 +51,6 @@ module.exports = yeoman.generators.Base.extend({
 
         done();
       }.bind(this));
-
-    this.on('end', function () {
-      this.log(yosay(
-        'All done!' + chalk.red('There are a few things you still need to do....') +
-        '\n 1. Open the solution.' +
-        '\n 2. Right click on the solution file' +
-        '\n 3. Manage NuGet Packages' +
-        '\n 4. Click on the restore button on the right of the yellow bar.' +
-        '\n    This will pull down all of your dependencies from NuGet.' +
-        '\n 5. Build the solution.' +
-        '\n 6. Open the Package Manager Console, type in \"update-database\".' +
-        '\n 7. You are now ready to use your API!  ENJOY!'
-        ));
-    });
   },
 
   createDirectories: function () {
