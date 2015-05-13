@@ -244,11 +244,7 @@ module.exports = yeoman.generators.Base.extend({
         );
       this.fs.copyTpl(
         this.templatePath('api/_web.config'),
-        this.destinationPath(this.appDirectory + 'Web.config'),[
-        {
-          applicationName: this.appData.applicationName},
-          {dbServerName: this.appData.dbServerName
-        }]
+        this.destinationPath(this.appDirectory + 'Web.config'), { applicationName: this.appData.applicationName, dbServerName: this.appData.dbServerName}
         );
       this.fs.copyTpl(
         this.templatePath('api/_web.debug.config'),
