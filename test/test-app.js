@@ -6,19 +6,69 @@ var helpers = require('yeoman-generator').test;
 var os = require('os');
 
 describe('webapi-microsoftowin-jwt-aspnetidentity:app', function () {
-  before(function (done) {
-    helpers.run(path.join(__dirname, '../generators/app'))
-      .withOptions({ skipInstall: true })
-      .withPrompts({ someOption: true })
-      .on('end', done);
+  beforeEach(function (done) {
+    helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
+      if (err) {
+        return done(err);
+      }
+
+      this.app = helpers.createGenerator('webapi-microsoftowin-jwt-aspnetidentity:app', [
+        '../../app'
+      ]);
+      done();
+    }.bind(this));
   });
 
-  it('creates files', function () {
-    assert.file([
-      'bower.json',
-      'package.json',
-      '.editorconfig',
-      '.jshintrc'
-    ]);
-  });
+  it('creates directories and files', function (done) {
+    var expected = [
+      'MyApplication.sln',
+      'packages/repositories.conig',
+      'MyApplication.API/AppStart/WebApiConfig.cs',
+      'MyApplication.API/Authentication/EmailTemplates/ConfirmEmailAddressEmail.html',
+      'MyApplication.API/Authentication/EmailTemplates/ResetPasswordEmail.html',
+      'MyApplication.API/Authentication/ApplicationJWTFormat.cs',
+      'MyApplication.API/Authentication/ApplicationUser.cs',
+      'MyApplication.API/Authentication/AuthenticationContext.cs',
+      'MyApplication.API/Authentication/AuthenticationEmailService.cs',
+      'MyApplication.API/Authentication/AuthenticationUserManager.cs',
+      'MyApplication.API/Authentication/OAuthProvider.cs',
+      'MyApplication.API/AutoMapping/AutoMappingExtensions.cs',
+      'MyApplication.API/AutoMapping/NewUserProfile.cs',
+      'MyApplication.API/AutoMapping/UserProfile.cs',
+      'MyApplication.API/Controllers/BaseController.cs',
+      'MyApplication.API/Controllers/UsersController.cs',
+      'MyApplication.API/Exceptions/APIException.cs',
+      'MyApplication.API/Exceptions/APIGlobalExceptionHandler.cs',
+      'MyApplication.API/Exceptions/APIResponseExceptionHandler.cs',
+      'MyApplication.API/Extensions/ExceptionExtensions.cs',
+      'MyApplication.API/Filters/APIExceptionFilterAttribute.cs',
+      'MyApplication.API/Filters/ModelValidationFilterAttribute.cs',
+      'MyApplication.API/Migrations/Configuration.cs',
+      'MyApplication.API/Models/Request/ConfirmEmailAddressRequest.cs',
+      'MyApplication.API/Models/Request/CreateUserRequest.cs',
+      'MyApplication.API/Models/Request/ResetPasswordRequest.cs',
+      'MyApplication.API/Models/Request/SendPasswordResetRequest.cs',
+      'MyApplication.API/Models/Request/UserRequest.cs',
+      'MyApplication.API/Models/Response/DefaultResponse.cs',
+      'MyApplication.API/Models/Response/UserResponse.cs',
+      'MyApplication.API/Models/NewUserModel.cs',
+      'MyApplication.API/Models/UserModel.cs',
+      'MyApplication.API/Properties/AssemblyInfo.cs',
+      'MyApplication.API.csproj',
+      'MyApplication.API/packages.config',
+      'MyApplication.API/Startup.cs',
+      'MyApplication.API/Web.config',
+      'MyApplication.API/Web.Debug.config',
+      'MyApplication.API/Web.Release.config'
+    ];
+
+    helpers.mockPrompt(this.app, {
+      'applicationName': 'MyApplication'
+    });
+    this.app.options['skip-install'] = true;
+    this.app.run({}, function () {
+      helpers.assertFile(expected);
+      done();
+    });
+  }); 
 });
