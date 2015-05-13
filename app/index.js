@@ -4,10 +4,12 @@ var chalk = require('chalk');
 var yosay = require('yosay');
 var guid = require('uuid');
 var mkdirp = require('mkdirp');
+var _ = require('underscore.string');
 
 module.exports = yeoman.generators.Base.extend({
   prompting: function () {
     var done = this.async();
+
 
     // Have Yeoman greet the user.
     this.log(yosay(
