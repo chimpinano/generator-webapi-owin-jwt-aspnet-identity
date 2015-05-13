@@ -21,12 +21,12 @@ module.exports = yeoman.generators.Base.extend({
       default: 'My Application',
       required: true
     }, {
-      type: 'input',
-      name: 'dbServerName',
-      message: 'What is the name of your SQL Server instance (e.g. .\sqlexpress or .)',
-      default: '.\sqlexpress',
-      required: true
-    }], function (props) {
+        type: 'input',
+        name: 'dbServerName',
+        message: 'What is the name of your SQL Server instance (e.g. .\sqlexpress or .)',
+        default: '.\sqlexpress',
+        required: true
+      }], function (props) {
         this.props.dbServerName = props.dbServerName;
         this.props.applicationName = this._.slugify(props.applicationName);
         this.props.apiProjectGuid = guid.v4();
@@ -242,7 +242,11 @@ module.exports = yeoman.generators.Base.extend({
         );
       this.fs.copyTpl(
         this.templatePath('api/_web.config'),
-        this.destinationPath(this.appDirectory + 'Web.config'), { applicationName: this.props.applicationName }
+        this.destinationPath(this.appDirectory + 'Web.config'),
+        {
+          applicationName: this.props.applicationName,
+          dbServerName: this.props.dbServerName
+        }
         );
       this.fs.copyTpl(
         this.templatePath('api/_web.debug.config'),
