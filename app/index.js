@@ -18,10 +18,17 @@ module.exports = yeoman.generators.Base.extend({
       type: 'input',
       name: 'applicationName',
       message: 'What is the name of your application?',
-      default: "My Application",
+      default: 'My Application',
+      required: true
+    }, {
+      type: 'input',
+      name: 'dbServerName',
+      message: 'What is the name of your SQL Server instance (e.g. .\sqlexpress or .)',
+      default: '.\sqlexpress',
       required: true
     }], function (props) {
-        this.props = props;
+        this.props.dbServerName = props.dbServerName;
+        this.props.applicationName = this._.slugify(props.applicationName);
         this.props.apiProjectGuid = guid.v4();
         this.props.apiAssemblyGuid = guid.v4();
 
