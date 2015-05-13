@@ -27,8 +27,8 @@ module.exports = yeoman.generators.Base.extend({
         default: '.\sqlexpress',
         required: true
       }], function (props) {
-        this.props.dbServerName = props.dbServerName;
-        this.props.applicationName = this._.slugify(props.applicationName);
+        this.props = props;
+        this.props.applicationName = this._.slugify(this.props.applicationName);
         this.props.apiProjectGuid = guid.v4();
         this.props.apiAssemblyGuid = guid.v4();
 
