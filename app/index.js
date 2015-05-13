@@ -3,7 +3,7 @@ var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
 var guid = require('uuid');
-var dir = require('mkdirp');
+var mkdirp = require('mkdirp');
 
 module.exports = yeoman.generators.Base.extend({
   prompting: function () {
@@ -60,20 +60,20 @@ module.exports = yeoman.generators.Base.extend({
     this.requestDirectory = this.modelsDirectory + 'Request/';
     this.propertiesDirectory = this.appDirectory + 'Properties/';
 
-    this.dir.mkdirp(this.packagesDirectory);
-    this.dir.mkdrip(this.appDirectory);
-    this.dir.mkdirp(this.appStart);
-    this.dir.mkdirp(this.authenticationDirectory);
-    this.dir.mkdirp(this.emailTemplatesDirectory);
-    this.dir.mkdirp(this.autoMappingDirectory);
-    this.dir.mkdirp(this.controllersDirectory);
-    this.dir.mkdirp(this.exceptionsDirectory);
-    this.dir.mkdirp(this.filtersDirectory);
-    this.dir.mkdirp(this.migrationsDirectory);
-    this.dir.mkdirp(this.modelsDirectory);
-    this.dir.mkdirp(this.responseDirectory);
-    this.dir.mkdirp(this.requestDirectory);
-    this.dir.mkdirp(this.propertiesDirectory);
+    this.mkdirp(this.packagesDirectory);
+    this.mkdrip(this.appDirectory);
+    this.mkdirp(this.appStart);
+    this.mkdirp(this.authenticationDirectory);
+    this.mkdirp(this.emailTemplatesDirectory);
+    this.mkdirp(this.autoMappingDirectory);
+    this.mkdirp(this.controllersDirectory);
+    this.mkdirp(this.exceptionsDirectory);
+    this.mkdirp(this.filtersDirectory);
+    this.mkdirp(this.migrationsDirectory);
+    this.mkdirp(this.modelsDirectory);
+    this.mkdirp(this.responseDirectory);
+    this.mkdirp(this.requestDirectory);
+    this.mkdirp(this.propertiesDirectory);
   },
 
   writing: {
