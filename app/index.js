@@ -28,7 +28,7 @@ module.exports = yeoman.generators.Base.extend({
         required: true
       }], function (props) {
         this.appData = props;
-        this.appData.applicationName = this._s.slugify(this.appData.applicationName);
+        this.appData.applicationName = _s.slugify(this.appData.applicationName);
         this.appData.apiProjectGuid = guid.v4();
         this.appData.apiAssemblyGuid = guid.v4();
 
