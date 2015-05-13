@@ -1,0 +1,41 @@
+{
+  "name": "generator-webapi-owin-jwt-aspnet-identity",
+  "version": "0.0.1",
+  "description": "Generates an ASP.NET Web API appliation using Microsoft.Owin, JWT, ASP.NET Identity",
+  "license": "MIT",
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bizcasfri/generator-webapi-owin-jwt-aspnet-identity"
+  },
+  "bugs": {
+    "url": "https://github.com/bizcasfri/generator-webapi-owin-jwt-aspnet-identity/issues"
+  },
+  "author": {
+    "name": "Aaron Davis",
+    "email": "",
+    "url": "https://github.com/bizcasfri"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "generators"
+  ],
+  "keywords": [
+    "yeoman-generator",
+    "ASP.NET Web API",
+    "Microsoft.OWIN",
+    "JWT",
+    "ASP.NET Identity"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^0.19.0",
+    "chalk": "^1.0.0",
+    "yosay": "^1.0.2",
+    "uuid": "^2.0.1"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  }
+}
