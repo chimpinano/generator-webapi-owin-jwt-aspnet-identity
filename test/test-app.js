@@ -15,13 +15,15 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
 
       helpers.run(path.join(__dirname, '../app'))
         .withPrompts({
-        applicationName: 'My Application',
-        dbServerName: '.\sqlexpress'
-      }).on('end', done);
+          applicationName: 'My Application',
+          dbServerName: '.\sqlexpress'
+        })
+        .on('end', done);
     }.bind(this));
   });
 
-  it('the generator should create all the files', function (done) {
+  it('the generator should create all the files', function () {
+    Console.log(__dirname);
     var expectedProjectFiles = [
       'MyApplication.sln',
       'packages/repositories.conig',
@@ -64,7 +66,6 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
       'MyApplication.API/Web.Release.config'
     ];
     assert.file(expectedProjectFiles);
-    done();
   });
 });
 
