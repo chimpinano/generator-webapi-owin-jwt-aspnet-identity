@@ -61,7 +61,9 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
       'MyApplication.API/Web.Debug.config',
       'MyApplication.API/Web.Release.config'
     ];
-    assert.file(expectedProjectFiles);
+    helpers.testDirectory(path.join(__dirname, './tmp'), function () {
+      assert.file(expectedProjectFiles);
+    });
   });
 });
 
