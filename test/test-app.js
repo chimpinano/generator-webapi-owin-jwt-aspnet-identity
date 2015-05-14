@@ -23,7 +23,7 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
   });
 
   it('the generator should create all the files', function () {
-    Console.log(__dirname);
+    console.log(__dirname);
     var expectedProjectFiles = [
       'MyApplication.sln',
       'packages/repositories.conig',
