@@ -126,7 +126,7 @@ module.exports = yeoman.generators.Base.extend({
       );
     this.fs.copyTpl(
       this.templatePath('api/Authentication/_oauthprovider.cs'),
-      this.destinationPath(path.join(path.join(this.appData.applicationName, 'Authentication/OAuthProvider.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationName, 'Authentication/OAuthProvider.cs')), { applicationName: this.appData.applicationName }
         );
     this.fs.copyTpl(
       this.templatePath('api/Authentication/EmailTemplates/_confirmemailaddressemail.html'),
