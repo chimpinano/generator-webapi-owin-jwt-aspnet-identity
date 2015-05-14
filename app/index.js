@@ -78,143 +78,143 @@ module.exports = yeoman.generators.Base.extend({
       this.requestDirectory = path.join(this.modelsDirectory, 'Request');
       this.propertiesDirectory = path.join(this.appDirectory, 'Properties');
 
-      this.mkdirp(this.packagesDirectory);
-      this.mkdirp(this.appDirectory);
-      this.mkdirp(this.appStart);
-      this.mkdirp(this.authenticationDirectory);
-      this.mkdirp(this.emailTemplatesDirectory);
-      this.mkdirp(this.autoMappingDirectory);
-      this.mkdirp(this.controllersDirectory);
-      this.mkdirp(this.exceptionsDirectory);
-      this.mkdirp(this.filtersDirectory);
-      this.mkdirp(this.migrationsDirectory);
-      this.mkdirp(this.modelsDirectory);
-      this.mkdirp(this.responseDirectory);
-      this.mkdirp(this.requestDirectory);
-      this.mkdirp(this.propertiesDirectory);
+      yeoman.mkdirp(this.packagesDirectory);
+      yeoman.mkdirp(this.appDirectory);
+      yeoman.mkdirp(this.appStart);
+      yeoman.mkdirp(this.authenticationDirectory);
+      yeoman.mkdirp(this.emailTemplatesDirectory);
+      yeoman.mkdirp(this.autoMappingDirectory);
+      yeoman.mkdirp(this.controllersDirectory);
+      yeoman.mkdirp(this.exceptionsDirectory);
+      yeoman.mkdirp(this.filtersDirectory);
+      yeoman.mkdirp(this.migrationsDirectory);
+      yeoman.mkdirp(this.modelsDirectory);
+      yeoman.mkdirp(this.responseDirectory);
+      yeoman.mkdirp(this.requestDirectory);
+      yeoman.mkdirp(this.propertiesDirectory);
     },
     app: function () {
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/App_Start/_webapiconfig.cs'),
         this.destinationPath(path.join(this.appStart, 'WebApiConfig.cs')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/Authentication/_applicationjwtformat.cs'),
         this.destinationPath(path.join(this.authenticationDirectory , 'ApplicationJwtFormat.cs')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/Authentication/_applicationuser.cs'),
         this.destinationPath(path.join(this.authenticationDirectory , 'ApplicationUser.cs')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/Authentication/_authenticationcontext.cs'),
         this.destinationPath(path.join(this.authenticationDirectory , 'AuthenticationContext.cs')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/Authentication/_authenticationemailservice.cs'),
         this.destinationPath(path.join(this.authenticationDirectory , 'AuthenticationEmailService.cs')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/Authentication/_authenticationusermanager.cs'),
         this.destinationPath(path.join(this.authenticationDirectory , 'AuthenticationUserManager.cs')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/Authentication/_oauthprovider.cs'),
         this.destinationPath(path.join(this.authenticationDirectory , 'OAuthProvider.cs')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/Authentication/EmailTemplates/_confirmemailaddressemail.html'),
         this.destinationPath(path.join(this.emailTemplatesDirectory , 'ConfirmEmailAddressEmail.html')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/Authentication/EmailTemplates/_resetpasswordemail.html'),
         this.destinationPath(path.join(this.emailTemplatesDirectory , 'ResetPasswordEmail.html')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/AutoMapping/_automappingextensions.cs'),
         this.destinationPath(path.join(this.autoMappingDirectory , 'AutoMappingExtensions.cs')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/AutoMapping/_newuserprofile.cs'),
         this.destinationPath(path.join(this.autoMappingDirectory , 'NewUserProfile.cs')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/AutoMapping/_userprofile.cs'),
         this.destinationPath(path.join(this.autoMappingDirectory , 'UserProfile.cs')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/Controllers/_basecontroller.cs'),
         this.destinationPath(path.join(this.controllersDirectory , 'BaseController.cs')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/Controllers/_userscontroller.cs'),
         this.destinationPath(path.join(this.controllersDirectory , 'UsersController.cs')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/Exceptions/_apiexception.cs'),
         this.destinationPath(path.join(this.exceptionsDirectory , 'APIException.cs')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/Exceptions/_apiglobalexceptionhandler.cs'),
         this.destinationPath(path.join(this.exceptionsDirectory , 'APIGlobalExceptionHandler.cs')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/Exceptions/_apiresponseexception.cs'),
         this.destinationPath(path.join(this.exceptionsDirectory , 'APIResponseException.cs')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/Extensions/_exceptionextensions.cs'),
         this.destinationPath(path.join(this.extensionsDirectory , 'ExceptionExtensions.cs')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/Filters/_apiexceptionfilterattribute.cs'),
         this.destinationPath(path.join(this.filtersDirectory , 'APIExceptionFilterAttribute.cs')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/Filters/_modelvalidationfilterattribute.cs'),
         this.destinationPath(path.join(this.filtersDirectory , 'ModelValidationFilterAttribute.cs')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/Migrations/_configuration.cs'),
         this.destinationPath(path.join(this.migrationsDirectory , 'Configuration.cs')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/Models/_newusermodel.cs'),
         this.destinationPath(path.join(this.modelsDirectory , 'NewUserModel.cs')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/Models/_usermodel.cs'),
         this.destinationPath(path.join(this.modelsDirectory , 'UserModel.cs')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/Models/Request/_confirmemailaddressrequest.cs'),
         this.destinationPath(path.join(this.requestDirectory , 'ConfirmEmailAddressRequest.cs')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/Models/Request/_createuserrequest.cs'),
         this.destinationPath(path.join(this.requestDirectory , 'CreateUserRequest.cs')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/Models/Request/_resetpasswordrequest.cs'),
         this.destinationPath(path.join(this.requestDirectory , 'ResetPasswordRequest.cs')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/Models/Request/_sendpasswordresetrequest.cs'),
         this.destinationPath(path.join(this.requestDirectory , 'SendPasswordResetRequest.cs')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/Models/Request/_userrequest.cs'),
         this.destinationPath(path.join(this.requestDirectory , 'UserRequest.cs')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/Models/Response/_defaultresponse.cs'),
         this.destinationPath(path.join(this.responseDirectory , 'DefaultResponse.cs')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/Models/Response/_userresponse.cs'),
         this.destinationPath(path.join(this.responseDirectory , 'UserResponse.cs')), { applicationName: this.appData.applicationName }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/Properties/_assemblyinfo.cs'),
         this.destinationPath(path.join(this.propertiesDirectory , 'AssemblyInfo.cs')),
         {
@@ -222,15 +222,15 @@ module.exports = yeoman.generators.Base.extend({
           apiAssemblyGuid: this.appData.apiAssemblyGuid
         }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/_packages.config'),
         this.destinationPath(path.join(this.appDirectory , 'Packages.config'))
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/_startup.cs'),
         this.destinationPath(path.join(this.appDirectory , 'Startup.cs')), { applicationName: this.appData.applicationName }
         );
-      this.loggingConfig = '<nlog xmlns="http://www.nlog-project.org/schemas/NLog.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">' ,
+      yeoman.loggingConfig = '<nlog xmlns="http://www.nlog-project.org/schemas/NLog.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">' ,
       '<variable name="appTitle" value="' , this.appData.applicationName , '" />' ,
       '<variable name="logFilePath" value="${basedir}/${appTitle}.log" />' ,
       '<targets async="true">' ,
@@ -240,7 +240,7 @@ module.exports = yeoman.generators.Base.extend({
       '<logger name="defaultLogger" minlevel="Warn" writeTo="file" />' ,
       '</rules>' ,
       '</nlog>';
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/_web.config'),
         this.destinationPath(path.join(this.appDirectory , 'Web.config')),
         {
@@ -249,15 +249,15 @@ module.exports = yeoman.generators.Base.extend({
           loggingConfig: this.loggingConfig
         }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/_web.debug.config'),
         this.destinationPath(path.join(this.appDirectory , 'Web.Debug.config'))
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/_web.release.config'),
         this.destinationPath(path.join(this.appDirectory , 'Web.Release.config'))
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('api/_api.csproj'),
         this.destinationPath(path.join(this.appDirectory , this.appData.applicationName + '.csproj')),
         {
@@ -265,7 +265,7 @@ module.exports = yeoman.generators.Base.extend({
           apiProjectGuid: this.appData.apiProjectGuid
         }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('_app.sln'),
         this.destinationPath(path.join(this.destinationRoot() , '/' , this.appData.solutionName + '.sln')),
         {
@@ -273,7 +273,7 @@ module.exports = yeoman.generators.Base.extend({
           apiProjectGuid: this.appData.apiProjectGuid
         }
         );
-      this.fs.copyTpl(
+      yeoman.fs.copyTpl(
         this.templatePath('packages/_repositories.config'),
         this.destinationPath(path.join(this.packagesDirectory , 'repositories.config')), { applicationName: this.appData.applicationName }
         );
