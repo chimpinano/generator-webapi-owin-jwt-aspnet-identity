@@ -293,7 +293,7 @@ module.exports = yeoman.generators.Base.extend({
       );
     this.fs.copyTpl(
       this.templatePath('api/_api.csproj'),
-      this.destinationPath(path.join(this.appData.applicationFolder, this.appData.applicationName + '.csproj')),
+      this.destinationPath(path.join(this.appData.applicationFolder, this.appData.applicationName + '.API.csproj')),
       {
         applicationName: this.appData.applicationName,
         apiProjectGuid: this.appData.apiProjectGuid
