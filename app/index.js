@@ -12,7 +12,6 @@ module.exports = yeoman.generators.Base.extend({
 
 
   init: function () {
-    yeoman.generators.Base.apply(this, arguments);
     this.pkg = require('../package.json');
 
     this.on('end', function () {
