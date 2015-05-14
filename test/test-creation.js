@@ -22,8 +22,9 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
   });
 
   it('the generator should create all the files', function (done) {
+    var tempPath = path.join(__dirname, 'temp');
     var expectedProjectFiles = [
-      'MyApplication.sln',
+      path.join(tempPath, 'MyApplication.sln'),
       'packages/repositories.conig',
       'MyApplication.API/AppStart/WebApiConfig.cs',
       'MyApplication.API/Authentication/EmailTemplates/ConfirmEmailAddressEmail.html',
@@ -72,8 +73,7 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
     });
 
     this.app.options['skip-install'] = true;
-    this.app.run(function () {
-      console.log(__dirname);
+    this.app.run(function () {      
       assert.file(expectedProjectFiles);
       done();
     });
