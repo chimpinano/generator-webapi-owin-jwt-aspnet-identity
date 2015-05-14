@@ -25,7 +25,7 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
   it('the generator should create all the files', function () {
     console.log(__dirname);
     var expectedProjectFiles = [
-      'MyApplication.sln',
+      path.join(__dirname, 'MyApplication.sln'),
       'packages/repositories.conig',
       'MyApplication.API/AppStart/WebApiConfig.cs',
       'MyApplication.API/Authentication/EmailTemplates/ConfirmEmailAddressEmail.html',
