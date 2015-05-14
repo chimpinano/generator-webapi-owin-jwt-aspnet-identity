@@ -73,6 +73,7 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
 
     this.app.options['skip-install'] = true;
     this.app.run(function () {
+      console.log(__dirname);
       assert.file(expectedProjectFiles);
       done();
     });
