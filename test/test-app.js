@@ -7,11 +7,11 @@ var temp = require('temp').track();
 
 describe('generator-webapi-owin-jwt-aspnet-identity', function () {
 
-  before(function (done) {
+  beforeEach(function (done) {
     helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
       if (err) {
-        console.log('Error', err);
-        return err;
+        done(err);
+        return;
       }
 
       this.app = helpers.createGenerator('webapi-owin-jwt-aspnet-identity:app', [
@@ -25,11 +25,14 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
       helpers.mockPrompt(this.app, {
         'dbServerName': '.\sqlexpress'
       });
+
+      this.app.run();
+
       done();
     }.bind(this));
   });
 
-  after(function () {
+  afterEach(function () {
     temp.cleanup();
   });
 
@@ -75,10 +78,8 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
       'MyApplication.API/Web.Debug.config',
       'MyApplication.API/Web.Release.config'
     ];
-    this.app.run(function () {
-      assert.file(expectedProjectFiles);
-      done();
-    });
+    assert.file(expectedProjectFiles);
+    done();
   });
 });
 
