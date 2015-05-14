@@ -64,6 +64,7 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
       helpers.mockPrompt(this.app, {
         'dbServerName': '.\sqlexpress'
       });
+
       done();
     }.bind(this));
   });
@@ -72,8 +73,10 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
     temp.cleanup();
   });
 
-  it('should create all of the application files', function () {
-    assert.file(expectedProjectFiles);
+  it('should run and create all of the application files', function () {
+    this.app.run({}, function () {
+      assert.file(expectedProjectFiles);
+    });
   });
 });
 
