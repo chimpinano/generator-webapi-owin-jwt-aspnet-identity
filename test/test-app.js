@@ -29,7 +29,7 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
     }.bind(this));
   });
 
-  after(function () {
+  afterEach(function () {
     temp.cleanup();
   });
 
