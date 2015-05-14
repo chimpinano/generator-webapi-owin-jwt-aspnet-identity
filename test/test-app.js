@@ -3,7 +3,7 @@
 var path = require('path');
 var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
-
+var filesDir = '';
 describe('generator-webapi-owin-jwt-aspnet-identity', function () {
 
   beforeEach(function (done) {
@@ -17,15 +17,17 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
         .withPrompts({
           applicationName: 'My Application',
           dbServerName: '.\sqlexpress'
-        }).inTmpDir()
+        }).inTmpDir(function(tmpDir) {
+            filesDir = tmpDir;
+        })
         .on('end', done);
     }.bind(this));
   });
 
   it('the generator should create all the files', function () {
-    console.log(__dirname);
+    console.log(filesDir);
     var expectedProjectFiles = [
-      path.join(__dirname, 'MyApplication.sln'),
+      path.join(filesDir, 'MyApplication.sln'),
       'packages/repositories.conig',
       'MyApplication.API/AppStart/WebApiConfig.cs',
       'MyApplication.API/Authentication/EmailTemplates/ConfirmEmailAddressEmail.html',
