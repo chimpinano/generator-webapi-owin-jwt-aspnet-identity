@@ -79,7 +79,7 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
       setTimeout(function () {
         assert.file(expectedProjectFiles);
         done();
-      }, 3000);
+      }, 1500);
     });
   });
 });
