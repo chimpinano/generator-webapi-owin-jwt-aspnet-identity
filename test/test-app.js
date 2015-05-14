@@ -51,8 +51,7 @@ var os = require('os');
 
 describe('webapi-microsoftowin-jwt-aspnetidentity:app', function () {
   before(function (done) {
-    helpers.run(path.join(__dirname, '../app'))
-      .withOptions({ skipInstall: true })
+    helpers.run(path.join(__dirname, '../app'))      
       .withPrompts({ applicationName: 'My Application', dbServerName: '.\sqlexpress'})
       .on('end', done);
   });
