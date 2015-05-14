@@ -261,7 +261,7 @@ module.exports = yeoman.generators.Base.extend({
       );
     this.fs.copyTpl(
       this.templatePath('_app.sln'),
-      this.destinationPath(this.destinationRoot() + '/' + this.appData.solutionNme),
+      this.destinationPath(this.destinationRoot() + '/' + this.appData.solutionName),
       {
         applicationName: this.appData.applicationName,
         apiProjectGuid: this.appData.apiProjectGuid
