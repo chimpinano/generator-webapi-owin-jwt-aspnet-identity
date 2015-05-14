@@ -95,8 +95,9 @@ module.exports = yeoman.generators.Base.extend({
     mkdirp(this.propertiesDirectory);
   },
 
+
   createAppStartFiles: function () {
-    console.log(this.templatePath());
+    console.log(this.destinationPath());
     this.fs.copyTpl(
       this.templatePath('api/App_Start/_webapiconfig.cs'),
       this.destinationPath(path.join(this.appStart, 'WebApiConfig.cs')), { applicationName: this.appData.applicationName }
