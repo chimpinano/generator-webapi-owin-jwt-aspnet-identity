@@ -73,9 +73,10 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
     temp.cleanup();
   });
 
-  it('should run and create all of the application files', function () {
+  it('should run and create all of the application files', function (done) {
     this.app.run({}, function () {
       assert.file(expectedProjectFiles);
+      done();
     });
   });
 });
