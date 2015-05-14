@@ -6,25 +6,27 @@ var helpers = require('yeoman-generator').test;
 var temp = require('temp').track();
 
 describe('generator-webapi-owin-jwt-aspnet-identity', function () {
+
   beforeEach(function (done) {
     helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
       if (err) {
         console.log('Error', err);
         return err;
       }
-    }.bind(this));
-    this.app = helpers.createGenerator('webapi-owin-jwt-aspnet-identity:app', [
-      '../../app'
-    ]);
-    this.app.options['skip-install'] = true;
 
-    helpers.mockPrompt(this.app, {
-      'applicationName': 'My Application'
-    });
-    helpers.mockPrompt(this.app, {
-      'dbServerName': '.\sqlexpress'
-    });
-    done();
+      this.app = helpers.createGenerator('webapi-owin-jwt-aspnet-identity:app', [
+        '../../app'
+      ]);
+      this.app.options['skip-install'] = true;
+
+      helpers.mockPrompt(this.app, {
+        'applicationName': 'My Application'
+      });
+      helpers.mockPrompt(this.app, {
+        'dbServerName': '.\sqlexpress'
+      });
+      done();
+    }.bind(this));
   });
 
   afterEach(function () {
@@ -74,8 +76,10 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
       'MyApplication.API/Web.Release.config'
     ];
     this.app.run({}, function () {
-      assert.file(expectedProjectFiles);
-      done();
+      it('should verify the files', function(done) {
+        assert.file(expectedProjectFiles);
+        done();
+      });
     });
   });
 });
