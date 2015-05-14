@@ -5,7 +5,7 @@ var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
 var temp = require('temp').track();
 
-describe('webapi-microsoftowin-jwt-aspnetidentity:app', function () {
+describe('generator-webapi-owin-jwt-aspnet-identity', function () {
   var expectedProjectFiles = [
     'MyApplication.sln',
     'packages/repositories.conig',
@@ -54,7 +54,7 @@ describe('webapi-microsoftowin-jwt-aspnetidentity:app', function () {
         return done(err);
       }
 
-      this.app = helpers.createGenerator('webapi-owin-jwt-aspnet-identity:app', [
+      this.app = helpers.createGenerator('generator-webapi-owin-jwt-aspnet-identity:app', [
         '../../app'
       ]);
 
@@ -72,7 +72,7 @@ describe('webapi-microsoftowin-jwt-aspnetidentity:app', function () {
     temp.cleanup();
   });
 
-  it('should create all of the application files', function (done) {
+  it('should create all of the application files', function () {
     assert.file(expectedProjectFiles);
   });
 });
