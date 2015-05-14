@@ -13,7 +13,7 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
         return err;
       }
 
-      helpers.run(path.join(__dirname, '../../app'))
+      helpers.run(path.join(__dirname, '../app'))
         .withPrompts({
         applicationName: 'My Application',
         dbServerName: '.\sqlexpress'
