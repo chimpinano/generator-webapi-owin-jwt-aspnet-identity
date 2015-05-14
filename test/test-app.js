@@ -20,7 +20,7 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
       this.app.options['skip-install'] = true;
 
       helpers.mockPrompt(this.app, {
-        'applicationName': 'MyApplication'
+        'applicationName': 'My Application'
       });
       helpers.mockPrompt(this.app, {
         'dbServerName': '.\sqlexpress'
@@ -35,7 +35,7 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
 
   it('should run and create all of the application files', function (done) {
     var expectedProjectFiles = [
-      'MyApplication.sln',
+       path.join(this.app.destinationRoot, 'MyApplication.sln'),
       'packages/repositories.conig',
       'MyApplication.API/AppStart/WebApiConfig.cs',
       'MyApplication.API/Authentication/EmailTemplates/ConfirmEmailAddressEmail.html',
