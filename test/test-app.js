@@ -1,15 +1,11 @@
 'use strict';
 
 var path = require('path');
-var fs = require('fs');
+var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
-var temp = require('temp').track();
-var assert = require('assert');
-var exec = require('child_process').exec;
-var async = require('async');
+var os = require('os');
 
 
-describe('generator-webapi-owin-jwt-aspnet-identity', function () {
   var expectedProjectFiles = [
     'MyApplication.sln',
     'packages/repositories.conig',
@@ -52,41 +48,18 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
     'MyApplication.API/Web.Release.config'
   ];
 
-  beforeEach(function (done) {
-    helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
-      if (err) {
-        console.log('Error', err);
-        return err;
-      }
-      done();
-    });
+
+describe('webapi-microsoftowin-jwt-aspnetidentity:app', function () {
+  before(function (done) {
+    helpers.run(path.join(__dirname, '../app'))
+      .withOptions({ skipInstall: true })
+      .withPrompts({ applicationName: 'My Application', dbServerName: '.\sqlexpress'})
+      .on('end', done);
   });
 
-  afterEach(function () {
-    temp.cleanup();
+  it('should create all solution files', function () {
+    assert.file(expectedProjectFiles);
   });
-  
-  
-  describe('Application generator', function () {
-    beforeEach(function (done) {
-      runGenerator('app',
-        '',
-        this, {
-          'appName': 'generator-webapi-owin-jwt-aspnet-identity',
-          'appDescription': 'Generates an ASP.NET Web API appliation using Microsoft.Owin, JWT, ASP.NET Identity',
-          'appKeywords': 'yeoman-generator, ASP.NET Web API, Microsoft.OWIN, JWT, ASP.NET Identity',
-          'appAuthor': 'Test',
-          'applicationName': 'My Application',
-          'dbServerName': '.\sqlexpress'
-        }, done
-        );
-    });
-
-    it('should create expected files', function () {
-      assert.file(expectedProjectFiles);
-    });
-  });
-
 });
 
 
