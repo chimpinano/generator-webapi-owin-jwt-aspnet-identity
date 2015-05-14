@@ -8,7 +8,7 @@ var temp = require('temp').track();
 describe('generator-webapi-owin-jwt-aspnet-identity', function () {
  
 
-  beforeEach(function (done) {
+  before(function (done) {
     helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
       if (err) {
         return done(err);
@@ -31,7 +31,13 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
 
 
 
-  it('should run and create all of the application files', function (done) {
+  it('the generator should run', function (done) {    
+    this.app.run(function() {
+      done();
+    });
+  });
+  
+  it('should have created all the files', function(done) {
     var expectedProjectFiles = [
       'MyApplication.sln',
       'packages/repositories.conig',
@@ -73,9 +79,8 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
       'MyApplication.API/Web.Debug.config',
       'MyApplication.API/Web.Release.config'
     ];
-    this.app.run(function () {
-      assert.file(expectedProjectFiles);
-    });
+    assert.file(expectedProjectFiles);
+    done();
   });
 });
 
