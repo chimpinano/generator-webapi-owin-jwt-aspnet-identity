@@ -3,7 +3,7 @@
 var path = require('path');
 var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
-var filesDir = '';
+
 describe('generator-webapi-owin-jwt-aspnet-identity', function () {
 
   beforeEach(function (done) {
@@ -13,21 +13,25 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
         return err;
       }
 
-      helpers.run(path.join(__dirname, '../app'))
-        .withPrompts({
-          applicationName: 'My Application',
-          dbServerName: '.\sqlexpress'
-        }).inTmpDir(function(tmpDir) {
-            filesDir = tmpDir;
-        })
-        .on('end', done);
+      this.app = helpers.createGenerator('webapi-owin-jwt-aspnet-identity:app', [
+        '../../app'
+      ]);
+      this.app.options['skip-install'] = false;
+
+      helpers.mockPrompt(this.app, {
+        'applicationName': 'My Application'
+      });
+      helpers.mockPrompt(this.app, {
+        'dbServerName': '.\sqlexpress'
+      });
+      
+      this.app.run().on('end', done);
     }.bind(this));
   });
 
   it('the generator should create all the files', function () {
-    console.log(filesDir);
     var expectedProjectFiles = [
-      path.join(filesDir, 'MyApplication.sln'),
+      'MyApplication.sln',
       'packages/repositories.conig',
       'MyApplication.API/AppStart/WebApiConfig.cs',
       'MyApplication.API/Authentication/EmailTemplates/ConfirmEmailAddressEmail.html',
@@ -67,7 +71,7 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
       'MyApplication.API/Web.Debug.config',
       'MyApplication.API/Web.Release.config'
     ];
-    assert.file(expectedProjectFiles);
+      assert.file(expectedProjectFiles);
   });
 });
 
