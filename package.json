@@ -16,11 +16,14 @@
     "email": "",
     "url": "https://github.com/bizcasfri"
   },
+  "engines": {
+		"node": ">=0.10.0"
+	},
   "scripts": {
     "test": "mocha"
   },
   "files": [
-    "generators"
+    "app"
   ],
   "keywords": [
     "yeoman-generator",
@@ -39,6 +42,9 @@
   },
   "devDependencies": {
 		"assert": "~1.1.1",
-    "mocha": "*"
+		"async": "~0.9.0",
+		"fs-extra": "~0.10.0",
+		"mocha": "~1.21.3",
+		"temp": "~0.8.0"
   }
 }
