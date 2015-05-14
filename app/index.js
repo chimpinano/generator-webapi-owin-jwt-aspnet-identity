@@ -55,7 +55,6 @@ module.exports = yeoman.generators.Base.extend({
           this.appData.applicationName = props.applicationName.replace(/\s+/g, '') + '.API';
           this.appData.apiProjectGuid = guid.v4();
           this.appData.apiAssemblyGuid = guid.v4();
-
           done();
         }.bind(this));
     }
@@ -63,7 +62,6 @@ module.exports = yeoman.generators.Base.extend({
 
   writing: {
     directories: function () {
-      this.log('Creating application directories....');
       this.packagesDirectory = this.destinationRoot() + '/packages/';
       this.appDirectory = this.destinationRoot() + '/' + this.appData.applicationName + '/';
       this.appStart = this.appDirectory + 'App_Start/';
@@ -96,7 +94,6 @@ module.exports = yeoman.generators.Base.extend({
       mkdirp(this.propertiesDirectory);
     },
     app: function () {
-      this.log('Creating application files....')
       this.fs.copyTpl(
         this.templatePath('api/App_Start/_webapiconfig.cs'),
         this.destinationPath(this.appStart + 'WebApiConfig.cs'), { applicationName: this.appData.applicationName }
