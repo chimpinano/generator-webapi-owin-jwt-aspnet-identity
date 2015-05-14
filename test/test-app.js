@@ -10,8 +10,8 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
   beforeEach(function (done) {
     helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
       if (err) {
-        done(err);
-        return;
+        console.log('Error', err);
+        return err;
       }
 
       this.app = helpers.createGenerator('webapi-owin-jwt-aspnet-identity:app', [
@@ -25,11 +25,7 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
       helpers.mockPrompt(this.app, {
         'dbServerName': '.\sqlexpress'
       });
-
-      this.app.run(function () {
-        done();
-      });
-
+      done();
     }.bind(this));
   });
 
@@ -39,7 +35,7 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
 
   it('the generator should create all the files', function (done) {
     var expectedProjectFiles = [
-      path.join(this.app.destinationPath(), 'MyApplication.sln'),
+      'MyApplication.sln',
       'packages/repositories.conig',
       'MyApplication.API/AppStart/WebApiConfig.cs',
       'MyApplication.API/Authentication/EmailTemplates/ConfirmEmailAddressEmail.html',
@@ -79,8 +75,12 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
       'MyApplication.API/Web.Debug.config',
       'MyApplication.API/Web.Release.config'
     ];
-    assert.file(expectedProjectFiles);
-    done();
+    this.app.run(function () {
+      setTimeout(function () {
+        assert.file(expectedProjectFiles);
+        done();
+      }, 3000);
+    });
   });
 });
 
