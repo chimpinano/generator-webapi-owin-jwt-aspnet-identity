@@ -14,7 +14,7 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
         return err;
       }
       this.app = helpers.createGenerator('webapi-owin-jwt-aspnet-identity:app', [
-        '../../app'
+        '../app'
       ]);
       this.app.options['skip-install'] = false;
 
@@ -24,9 +24,7 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
       helpers.mockPrompt(this.app, {
         'dbServerName': '.\sqlexpress'
       });
-      this.app.inTmpDir(function () {
-        done();
-      });
+      done();
     }.bind(this));
   });
 
