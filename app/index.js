@@ -1,6 +1,8 @@
 'use strict';
 var path = require('path');
 var yeoman = require('yeoman-generator');
+var fs = require('fs');
+var mkdirp = require('mkdirp');
 var chalk = require('chalk');
 var yosay = require('yosay');
 var guid = require('uuid');
