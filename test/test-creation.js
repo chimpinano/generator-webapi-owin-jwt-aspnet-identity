@@ -6,34 +6,19 @@ var helpers = require('yeoman-generator').test;
 
 describe('generator-webapi-owin-jwt-aspnet-identity', function () {
 
-  beforeEach(function (done) {
-    helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
-      if (err) {
-        console.log('Error', err);
-        return err;
-      }
-
-      this.app = helpers.createGenerator('webapi-owin-jwt-aspnet-identity:app', [
-        '../../app'
-      ]);
-
-      done();
-    }.bind(this));
-  });
-  
-  it('the generator runs as expected', function(done) {
-    helpers.mockPrompt(this.app, {
-      'applicationName': 'My Application'
-    });
-    helpers.mockPrompt(this.app, {
-      'dbServerName': '.\sqlexpress'
-    });
-
-    this.app.options['skip-install'] = true;
-    this.app.run().on('end', done);
+  before(function (done) {
+    helpers.run(path.join(__dirname, '../app'))
+      .inDir(path.join(__dirname, './tmp'))
+      .withPrompts(
+      {
+        applicationName: 'My Application',
+        dbServerName: '.\sqlexpress'
+      })
+      .on('end', done);
   });
 
-  it('the generator should create all the files', function (done) {    
+
+  it('the generator should create all the files', function () {
     var expectedProjectFiles = [
       'MyApplication.sln',
       'packages/repositories.conig',
