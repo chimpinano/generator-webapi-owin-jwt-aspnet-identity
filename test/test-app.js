@@ -3,7 +3,6 @@
 var path = require('path');
 var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
-var temp = require('temp').track();
 
 describe('generator-webapi-owin-jwt-aspnet-identity', function () {
 
@@ -14,7 +13,7 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
         return err;
       }
       this.app = helpers.createGenerator('webapi-owin-jwt-aspnet-identity:app', [
-        '../app'
+        '../../app'
       ]);
       this.app.options['skip-install'] = false;
 
@@ -24,12 +23,8 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
       helpers.mockPrompt(this.app, {
         'dbServerName': '.\sqlexpress'
       });
-      done();
+      this.app.run().on('end', done);
     }.bind(this));
-  });
-
-  afterEach(function () {
-    temp.cleanup();
   });
 
   it('the generator should create all the files', function (done) {
@@ -74,10 +69,7 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
       'MyApplication.API/Web.Debug.config',
       'MyApplication.API/Web.Release.config'
     ];
-    this.app.run().on('end', function () {
-      assert.file(expectedProjectFiles);
-      done();
-    });
+    assert.file(expectedProjectFiles);
   });
 });
 
