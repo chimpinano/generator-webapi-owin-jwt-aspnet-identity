@@ -45,8 +45,8 @@ module.exports = yeoman.generators.Base.extend({
         required: true
       }], function (props) {
         this.appData = props;
-        this.appData.applicationName = this.appData.applicationName.replace(/\s+/g, '') + '.API';
-        this.appData.solutionName = this.appData.applicationName.replace(/\s+/g, '') + '.sln';
+        this.appData.applicationName = props.applicationName.replace(/\s+/g, '') + '.API';
+        this.appData.solutionName = props.applicationName.replace(/\s+/g, '') + '.sln';
         this.appData.apiProjectGuid = guid.v4();
         this.appData.apiAssemblyGuid = guid.v4();
 
@@ -63,7 +63,7 @@ module.exports = yeoman.generators.Base.extend({
     this.autoMappingDirectory = this.appDirectory + 'AutoMapping/';
     this.controllersDirectory = this.appDirectory + 'Controllers/';
     this.exceptionsDirectory = this.appDirectory + 'Exceptions/';
-       this.extensionsDirectory = this.appDirectory + 'Extensions/';
+    this.extensionsDirectory = this.appDirectory + 'Extensions/';
     this.filtersDirectory = this.appDirectory + 'Filters/';
     this.migrationsDirectory = this.appDirectory + 'Migrations/';
     this.modelsDirectory = this.appDirectory + 'Models/';
@@ -216,6 +216,14 @@ module.exports = yeoman.generators.Base.extend({
         apiAssemblyGuid: this.appData.apiAssemblyGuid
       }
       );
+    this.fs.copyTpl(
+      this.templatePath('api/_packages.config'),
+      this.destinationPath(this.appDirectory + 'Packages.config')
+      );
+    this.fs.copyTpl(
+      this.templatePath('api/_startup.cs'),
+      this.destinationPath(this.appDirectory + 'Startup.cs'), { applicationName: this.appData.applicationName }
+      );
     this.loggingConfig = '<nlog xmlns="http://www.nlog-project.org/schemas/NLog.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">' +
     '<variable name="appTitle" value="' + this.appData.applicationName + '" />' +
     '<variable name="logFilePath" value="${basedir}/${appTitle}.log" />' +
@@ -226,14 +234,6 @@ module.exports = yeoman.generators.Base.extend({
     '<logger name="defaultLogger" minlevel="Warn" writeTo="file" />' +
     '</rules>' +
     '</nlog>';
-    this.fs.copyTpl(
-      this.templatePath('api/_packages.config'),
-      this.destinationPath(this.appDirectory + 'Packages.config')
-      );
-    this.fs.copyTpl(
-      this.templatePath('api/_startup.cs'),
-      this.destinationPath(this.appDirectory + 'Startup.cs'), { applicationName: this.appData.applicationName }
-      );
     this.fs.copyTpl(
       this.templatePath('api/_web.config'),
       this.destinationPath(this.appDirectory + 'Web.config'),
@@ -250,6 +250,14 @@ module.exports = yeoman.generators.Base.extend({
     this.fs.copyTpl(
       this.templatePath('api/_web.release.config'),
       this.destinationPath(this.appDirectory + 'Web.Release.config')
+      );
+    this.fs.copyTpl(
+      this.templatePath('api/_api.csproj'),
+      this.destinationPath(this.appDirectory + this.appData.applicationName + '.csproj'),
+      {
+        applicationName: this.appData.applicationName,
+        apiProjectGuid: this.appData.apiProjectGuid
+      }
       );
     this.fs.copyTpl(
       this.templatePath('_app.sln'),
