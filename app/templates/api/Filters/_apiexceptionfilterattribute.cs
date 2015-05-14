@@ -19,13 +19,13 @@ namespace <%= applicationName %>.API.Filters
         {
             if (context.Exception is APIException)
             {
-                context.Response = context.Request.CreateResponse<DefaultResponseModel>(HttpStatusCode.OK,
+                context.Response = context.Request.CreateResponse<DefaultResponse>(HttpStatusCode.OK,
                     (context.Exception as APIException).BuildFailedResponseWithMessages(new List<string>()));
             }
             else
             {
                 var response = new Exception(ConfigurationManager.AppSettings["defaultErrorMessage"]).BuildErrorResponseWithMessage();
-                context.Response = context.Request.CreateResponse<DefaultResponseModel>(HttpStatusCode.InternalServerError,
+                context.Response = context.Request.CreateResponse<DefaultResponse>(HttpStatusCode.InternalServerError,
                     response);
             }
 

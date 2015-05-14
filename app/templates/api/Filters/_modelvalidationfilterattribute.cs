@@ -23,7 +23,7 @@ namespace <%= applicationName %>.API.Filters
                     .Select(e => e.ErrorMessage)
                     .ToList();
 
-                actionContext.Response = actionContext.Request.CreateResponse<DefaultResponseModel>(HttpStatusCode.OK,
+                actionContext.Response = actionContext.Request.CreateResponse<DefaultResponse>(HttpStatusCode.OK,
                     new APIException("").BuildFailedResponseWithMessages(errors));
             }
 
