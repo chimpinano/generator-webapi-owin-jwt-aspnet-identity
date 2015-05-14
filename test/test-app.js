@@ -76,10 +76,8 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
       'MyApplication.API/Web.Release.config'
     ];
     this.app.run({}, function () {
-      it('should verify the files', function(done) {
         assert.file(expectedProjectFiles);
         done();
-      });
     });
   });
 });
