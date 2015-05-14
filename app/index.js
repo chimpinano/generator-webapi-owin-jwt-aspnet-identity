@@ -51,8 +51,9 @@ module.exports = yeoman.generators.Base.extend({
         required: true
       }], function (props) {
         this.appData = props;
+        this.appData.applicationName = props.applicationName;
         this.appData.solutionName = props.applicationName.replace(/\s+/g, '');
-        this.appData.applicationName = props.applicationName.replace(/\s+/g, '') + '.API';
+        this.appData.applicationFolder = props.applicationName.replace(/\s+/g, '') + '.API';
         this.appData.apiProjectGuid = guid.v4();
         this.appData.apiAssemblyGuid = guid.v4();
         done();
@@ -61,7 +62,7 @@ module.exports = yeoman.generators.Base.extend({
 
   appPaths: function () {
     this.packagesDirectory = path.join(this.destinationRoot(), 'packages');
-    this.appDirectory = path.join(this.destinationRoot(), this.appData.applicationName);
+    this.appDirectory = path.join(this.destinationRoot(), this.appData.applicationFolder);
     this.appStart = path.join(this.appDirectory, 'App_Start/');
     this.authenticationDirectory = path.join(this.appDirectory, 'Authentication');
     this.emailTemplatesDirectory = path.join(this.authenticationDirectory, 'EmailTemplates');
@@ -99,154 +100,154 @@ module.exports = yeoman.generators.Base.extend({
   createAppStartFiles: function () {
     this.fs.copyTpl(
       this.templatePath('api/App_Start/_webapiconfig.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'App_Start/WebApiConfig.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'App_Start/WebApiConfig.cs')), { applicationName: this.appData.applicationName }
       );
   },
 
   createAuthenticationFiles: function () {
     this.fs.copyTpl(
       this.templatePath('api/Authentication/_applicationjwtformat.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Authentication/ApplicationJwtFormat.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Authentication/ApplicationJwtFormat.cs')), { applicationName: this.appData.applicationName }
       );
     this.fs.copyTpl(
       this.templatePath('api/Authentication/_applicationuser.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Authentication/ApplicationUser.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Authentication/ApplicationUser.cs')), { applicationName: this.appData.applicationName }
       );
     this.fs.copyTpl(
       this.templatePath('api/Authentication/_authenticationcontext.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Authentication/AuthenticationContext.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Authentication/AuthenticationContext.cs')), { applicationName: this.appData.applicationName }
       );
     this.fs.copyTpl(
       this.templatePath('api/Authentication/_authenticationemailservice.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Authentication/AuthenticationEmailService.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Authentication/AuthenticationEmailService.cs')), { applicationName: this.appData.applicationName }
       );
     this.fs.copyTpl(
       this.templatePath('api/Authentication/_authenticationusermanager.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Authentication/AuthenticationUserManager.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Authentication/AuthenticationUserManager.cs')), { applicationName: this.appData.applicationName }
       );
     this.fs.copyTpl(
       this.templatePath('api/Authentication/_oauthprovider.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Authentication/OAuthProvider.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Authentication/OAuthProvider.cs')), { applicationName: this.appData.applicationName }
         );
     this.fs.copyTpl(
       this.templatePath('api/Authentication/EmailTemplates/_confirmemailaddressemail.html'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Authentication/EmailTemplates/ConfirmEmailAddressEmail.html')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Authentication/EmailTemplates/ConfirmEmailAddressEmail.html')), { applicationName: this.appData.applicationName }
       );
     this.fs.copyTpl(
       this.templatePath('api/Authentication/EmailTemplates/_resetpasswordemail.html'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Authentication/EmailTemplates/ResetPasswordEmail.html')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Authentication/EmailTemplates/ResetPasswordEmail.html')), { applicationName: this.appData.applicationName }
       );
   },
 
   createAutoMappingFiles: function () {
     this.fs.copyTpl(
       this.templatePath('api/AutoMapping/_automappingextensions.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'AutoMapping/AutoMappingExtensions.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'AutoMapping/AutoMappingExtensions.cs')), { applicationName: this.appData.applicationName }
       );
     this.fs.copyTpl(
       this.templatePath('api/AutoMapping/_newuserprofile.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'AutoMapping/NewUserProfile.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'AutoMapping/NewUserProfile.cs')), { applicationName: this.appData.applicationName }
       );
     this.fs.copyTpl(
       this.templatePath('api/AutoMapping/_userprofile.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'AutoMapping/UserProfile.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'AutoMapping/UserProfile.cs')), { applicationName: this.appData.applicationName }
       );
   },
 
   createControllerFiles: function () {
     this.fs.copyTpl(
       this.templatePath('api/Controllers/_basecontroller.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Controllers/BaseController.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Controllers/BaseController.cs')), { applicationName: this.appData.applicationName }
       );
     this.fs.copyTpl(
       this.templatePath('api/Controllers/_userscontroller.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Controllers/UsersController.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Controllers/UsersController.cs')), { applicationName: this.appData.applicationName }
       );
   },
 
   createExceptionFiles: function () {
     this.fs.copyTpl(
       this.templatePath('api/Exceptions/_apiexception.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Exceptions/APIException.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Exceptions/APIException.cs')), { applicationName: this.appData.applicationName }
       );
     this.fs.copyTpl(
       this.templatePath('api/Exceptions/_apiglobalexceptionhandler.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Exceptions/APIGlobalExceptionHandler.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Exceptions/APIGlobalExceptionHandler.cs')), { applicationName: this.appData.applicationName }
       );
     this.fs.copyTpl(
       this.templatePath('api/Exceptions/_apiresponseexception.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Exceptions/APIResponseException.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Exceptions/APIResponseException.cs')), { applicationName: this.appData.applicationName }
       );
   },
 
   createExtensionFiles: function () {
     this.fs.copyTpl(
       this.templatePath('api/Extensions/_exceptionextensions.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Extensions/ExceptionExtensions.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Extensions/ExceptionExtensions.cs')), { applicationName: this.appData.applicationName }
       );
   },
 
   createFilterFiles: function () {
     this.fs.copyTpl(
       this.templatePath('api/Filters/_apiexceptionfilterattribute.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Filters/APIExceptionFilterAttribute.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Filters/APIExceptionFilterAttribute.cs')), { applicationName: this.appData.applicationName }
       );
     this.fs.copyTpl(
       this.templatePath('api/Filters/_modelvalidationfilterattribute.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Filters/ModelValidationFilterAttribute.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Filters/ModelValidationFilterAttribute.cs')), { applicationName: this.appData.applicationName }
       );
   },
 
   createMigrationFiles: function () {
     this.fs.copyTpl(
       this.templatePath('api/Migrations/_configuration.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Migrations/Configuration.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Migrations/Configuration.cs')), { applicationName: this.appData.applicationName }
       );
   },
 
   createModelFiles: function () {
     this.fs.copyTpl(
       this.templatePath('api/Models/_newusermodel.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Models/NewUserModel.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Models/NewUserModel.cs')), { applicationName: this.appData.applicationName }
       );
     this.fs.copyTpl(
       this.templatePath('api/Models/_usermodel.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Models/UserModel.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Models/UserModel.cs')), { applicationName: this.appData.applicationName }
       );
     this.fs.copyTpl(
       this.templatePath('api/Models/Request/_confirmemailaddressrequest.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Models/Request/ConfirmEmailAddressRequest.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Models/Request/ConfirmEmailAddressRequest.cs')), { applicationName: this.appData.applicationName }
       );
     this.fs.copyTpl(
       this.templatePath('api/Models/Request/_createuserrequest.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Models/Request/CreateUserRequest.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Models/Request/CreateUserRequest.cs')), { applicationName: this.appData.applicationName }
       );
     this.fs.copyTpl(
       this.templatePath('api/Models/Request/_resetpasswordrequest.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Models/Request/ResetPasswordRequest.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Models/Request/ResetPasswordRequest.cs')), { applicationName: this.appData.applicationName }
       );
     this.fs.copyTpl(
       this.templatePath('api/Models/Request/_sendpasswordresetrequest.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Models/Request/SendPasswordResetRequest.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Models/Request/SendPasswordResetRequest.cs')), { applicationName: this.appData.applicationName }
       );
     this.fs.copyTpl(
       this.templatePath('api/Models/Request/_userrequest.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Models/Request/UserRequest.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Models/Request/UserRequest.cs')), { applicationName: this.appData.applicationName }
       );
     this.fs.copyTpl(
       this.templatePath('api/Models/Response/_defaultresponse.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Models/Response/DefaultResponse.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Models/Response/DefaultResponse.cs')), { applicationName: this.appData.applicationName }
       );
     this.fs.copyTpl(
       this.templatePath('api/Models/Response/_userresponse.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Models/Response/UserResponse.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Models/Response/UserResponse.cs')), { applicationName: this.appData.applicationName }
       );
   },
 
   createPropertiesFiles: function () {
     this.fs.copyTpl(
       this.templatePath('api/Properties/_assemblyinfo.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Properties/AssemblyInfo.cs')),
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Properties/AssemblyInfo.cs')),
       {
         applicationName: this.appData.applicationName,
         apiAssemblyGuid: this.appData.apiAssemblyGuid
@@ -257,14 +258,14 @@ module.exports = yeoman.generators.Base.extend({
   createRootFiles: function () {
     this.fs.copyTpl(
       this.templatePath('api/_packages.config'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Packages.config'))
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Packages.config'))
       );
     this.fs.copyTpl(
       this.templatePath('api/_startup.cs'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Startup.cs')), { applicationName: this.appData.applicationName }
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Startup.cs')), { applicationName: this.appData.applicationName }
       );
     this.loggingConfig = '<nlog xmlns="http://www.nlog-project.org/schemas/NLog.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">',
-    '<variable name="appTitle" value="', this.appData.applicationName, '" />',
+    '<variable name="appTitle" value="' + this.appData.applicationName + '" />',
     '<variable name="logFilePath" value="${basedir}/${appTitle}.log" />',
     '<targets async="true">',
     '<target name="file" xsi:type="File" fileName="${logFilePath}" layout="${longdate} ${level:upperCase=true}: ${message}${newline}(${stacktrace}) ${exception:format=ToString}" />',
@@ -275,7 +276,7 @@ module.exports = yeoman.generators.Base.extend({
     '</nlog>';
     this.fs.copyTpl(
       this.templatePath('api/_web.config'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Web.config')),
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Web.config')),
       {
         applicationName: this.appData.applicationName,
         dbServerName: this.appData.dbServerName,
@@ -284,15 +285,15 @@ module.exports = yeoman.generators.Base.extend({
       );
     this.fs.copyTpl(
       this.templatePath('api/_web.debug.config'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Web.Debug.config'))
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Web.Debug.config'))
       );
     this.fs.copyTpl(
       this.templatePath('api/_web.release.config'),
-      this.destinationPath(path.join(this.appData.applicationName, 'Web.Release.config'))
+      this.destinationPath(path.join(this.appData.applicationFolder, 'Web.Release.config'))
       );
     this.fs.copyTpl(
       this.templatePath('api/_api.csproj'),
-      this.destinationPath(path.join(this.appData.applicationName, this.appData.applicationName + '.csproj')),
+      this.destinationPath(path.join(this.appData.applicationFolder, this.appData.applicationName + '.csproj')),
       {
         applicationName: this.appData.applicationName,
         apiProjectGuid: this.appData.apiProjectGuid
