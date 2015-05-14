@@ -1,7 +1,7 @@
 'use strict';
 
 var path = require('path');
-var assert = require('yeoman-generator').assert;
+var assert = require('assert');
 var helpers = require('yeoman-generator').test;
 
 describe('generator-webapi-owin-jwt-aspnet-identity', function () {
@@ -33,10 +33,9 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
     this.app.run().on('end', done);
   });
 
-  it('the generator should create all the files', function (done) {
-    var tempPath = path.join(__dirname, 'temp');
+  it('the generator should create all the files', function (done) {    
     var expectedProjectFiles = [
-      path.join(tempPath, 'MyApplication.sln'),
+      'MyApplication.sln',
       'packages/repositories.conig',
       'MyApplication.API/AppStart/WebApiConfig.cs',
       'MyApplication.API/Authentication/EmailTemplates/ConfirmEmailAddressEmail.html',
