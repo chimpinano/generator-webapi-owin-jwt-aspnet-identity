@@ -20,6 +20,18 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
       done();
     }.bind(this));
   });
+  
+  it('the generator runs as expected', function(done) {
+    helpers.mockPrompt(this.app, {
+      'applicationName': 'My Application'
+    });
+    helpers.mockPrompt(this.app, {
+      'dbServerName': '.\sqlexpress'
+    });
+
+    this.app.options['skip-install'] = true;
+    this.app.run().on('end', done);
+  });
 
   it('the generator should create all the files', function (done) {
     var tempPath = path.join(__dirname, 'temp');
@@ -64,19 +76,7 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
       'MyApplication.API/Web.Debug.config',
       'MyApplication.API/Web.Release.config'
     ];
-
-    helpers.mockPrompt(this.app, {
-      'applicationName': 'My Application'
-    });
-    helpers.mockPrompt(this.app, {
-      'dbServerName': '.\sqlexpress'
-    });
-
-    this.app.options['skip-install'] = true;
-    this.app.run(function () {      
-      assert.file(expectedProjectFiles);
-      done();
-    });
+    assert.file(expectedProjectFiles);
   });
 });
 
