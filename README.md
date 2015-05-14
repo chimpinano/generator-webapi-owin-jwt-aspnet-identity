@@ -1,47 +1,74 @@
-# generator-webapi-microsoftowin-jwt-aspnetidentity [![Build Status](https://secure.travis-ci.org/bizcasfri/generator-webapi-owin-jwt-aspnet-identity.png?branch=master)](https://travis-ci.org/bizcasfri/generator-webapi-owin-jwt-aspnet-identity)
+#Generate an ASP.NET Web API with OAuth JSON Web Tokens Authentication and ASP.NET Identity
 
-> [Yeoman](http://yeoman.io) generator
+This generator will provide you with a fully functional Web API application that has implemented OAuth JSON Web Token and ASP.NET Identity.  This is a [Yeoman](http://yeoman.io/ "Yeoman") generator.  You will need NPM installed on your machine to generate the API. You can get npm by installing [nodeJS](https://nodejs.org/download/ "nodeJS")
 
-
-## Getting Started
-
-### What is Yeoman?
-
-Trick question. It's not a thing. It's this guy:
-
-![](http://i.imgur.com/JHaAlBJ.png)
-
-Basically, he wears a top hat, lives in your computer, and waits for you to tell him what kind of application you wish to create.
-
-Not every new computer comes with a Yeoman pre-installed. He lives in the [npm](https://npmjs.org) package repository. You only have to ask for him once, then he packs up and moves into your hard drive. *Make sure you clean up, he likes new and shiny things.*
-
-```bash
-npm install -g yo
-```
-
-### Yeoman Generators
-
-Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
-
-To install generator-webapi-microsoftowin-jwt-aspnetidentity from npm, run:
-
-```bash
-npm install -g generator-webapi-microsoftowin-jwt-aspnetidentity
-```
-
-Finally, initiate the generator:
-
-```bash
-yo webapi-microsoftowin-jwt-aspnetidentity
-```
-
-### Getting To Know Yeoman
-
-Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
-
-If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
+Once you have npm installed you will need to install Yeoman. Open a command prompt and enter the following command:
 
 
-## License
 
-MIT
+    npm install -g yo
+ 
+
+You now have Yeoman installed globally on your computer.  Next you need to install this generator, again, open a command prompt and type this command:
+
+    npm install -g generator-webapi-owin-jwt-aspnet-identity
+
+You now have the generator installed on your computer.  Using the command prompt, navigate to your development working directory for this project.  Once you are there, type this command:
+
+
+    yo webapi-owin-jwt-aspnet-identity
+
+
+This will kick off the installation.  During the installation, you will be asked two questions
+
+1. What is the name of your application
+2. What is the name of the SQL Server instance on your computer
+
+
+After answering the questions, the entire API solution and project will be created.  There are a few more things you will need to do before you are finished.
+
+
+1. Open the solution
+2. Right click on references in the project, and select Manage NuGet Packages
+3. In the NuGet package window you will see a yellow bar at the top.  Click on the restore button on the right side of the yellow bar.  This will restore all of the project dependencies.
+
+![NuGet restore](https://github.com/bizcasfri/generator-webapi-owin-jwt-aspnet-identity/blob/master/readmeimages/nugetrestore.png)
+
+Once the restore is finished the window should look something like this:
+
+![nuget restore finished](https://github.com/bizcasfri/generator-webapi-owin-jwt-aspnet-identity/blob/master/readmeimages/nugetrestorefinished.png)
+
+Now you can build the solution!  Next we need to do some database work.  In the Visual Studio menu to to View>Other Windows>Package Manager Console.  In the console, type the following command:
+
+
+
+    add-migration "database creation"
+
+This will create a migration file so you can now update/create your database by running this command:
+
+
+    update-database
+
+Once this command is finished, you can open SQL Server Management Studio and see that the database was created.
+
+**If you have any issues during these steps it is most likely related to having the wrong database server instance name (which you entered during the installation).  Check the connection string in the Web.config to make sure the instance name is correct**
+
+
+Now there are a few application settings that will need to be changed for enabling email notifications.  In the appSettings section of the Web.config, you will need to change the following settings as needed.
+
+
+
+    <add key="emailHost" value="localhost" />
+    <add key="supportEmailAddress" value="support@yourapp.com" />
+    <add key="supportEmailName" value="Customer Support" />
+    <add key="emailUser" value="user@yourapp.com" />
+    <add key="emailPassword" value="yourpassword" />
+
+
+If you don't have an SMTP server, you can use [SMTP4Dev](https://smtp4dev.codeplex.com/ "SMTP4Dev").  While it is running it will attach to port 25 and intercept emails coming from your development projects.  It has a user interface and you can open the emails.
+
+
+You are ready to start testing your API.  I typically use Postman.  I have created a [JSON Postman file](https://github.com/bizcasfri/generator-webapi-owin-jwt-aspnet-identity/blob/master/postmanapitests.json "JSON Postman file") that you can import into Postman to get your started.  It is based on the functionality of the API you just installed.
+
+
+
