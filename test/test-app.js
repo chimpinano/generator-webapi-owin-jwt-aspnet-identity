@@ -16,8 +16,6 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
       this.app = helpers.createGenerator('webapi-owin-jwt-aspnet-identity:app', [
         '../../app'
       ]);
-      this.app.options['skip-install'] = false;
-
       helpers.mockPrompt(this.app, {
         'applicationName': 'My Application'
       });
