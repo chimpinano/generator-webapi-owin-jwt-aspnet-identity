@@ -75,7 +75,7 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
       'MyApplication.API/Web.Debug.config',
       'MyApplication.API/Web.Release.config'
     ];
-    this.app.run(function () {
+    this.app.run().on('end', function () {
       assert.file(expectedProjectFiles);
       done();
     });
