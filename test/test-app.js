@@ -26,9 +26,10 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
         'dbServerName': '.\sqlexpress'
       });
 
-      this.app.run();
+      this.app.run(function () {
+        done();
+      });
 
-      done();
     }.bind(this));
   });
 
