@@ -45,8 +45,8 @@ module.exports = yeoman.generators.Base.extend({
         required: true
       }], function (props) {
         this.appData = props;
+        this.appData.solutionName = props.applicationName.replace(/\s+/g, '');
         this.appData.applicationName = props.applicationName.replace(/\s+/g, '') + '.API';
-        this.appData.solutionName = props.applicationName.replace(/\s+/g, '') + '.sln';
         this.appData.apiProjectGuid = guid.v4();
         this.appData.apiAssemblyGuid = guid.v4();
 
@@ -261,7 +261,7 @@ module.exports = yeoman.generators.Base.extend({
       );
     this.fs.copyTpl(
       this.templatePath('_app.sln'),
-      this.destinationPath(this.destinationRoot() + '/' + this.appData.solutionName),
+      this.destinationPath(this.destinationRoot() + '/' + this.appData.solutionName + '.sln'),
       {
         applicationName: this.appData.applicationName,
         apiProjectGuid: this.appData.apiProjectGuid
