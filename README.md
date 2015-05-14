@@ -1,3 +1,5 @@
+![build image](https://travis-ci.org/bizcasfri/generator-webapi-owin-jwt-aspnet-identity.svg?branch=master)
+
 #Generate an ASP.NET Web API with OAuth JSON Web Tokens Authentication and ASP.NET Identity
 
 This generator will provide you with a fully functional Web API application that has implemented OAuth JSON Web Token and ASP.NET Identity.  This is a [Yeoman](http://yeoman.io/ "Yeoman") generator.  You will need NPM installed on your machine to generate the API. You can get npm by installing [nodeJS](https://nodejs.org/download/ "nodeJS")
