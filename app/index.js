@@ -10,10 +10,6 @@ var _s = require('underscore.string');
 
 var Generator = module.exports = function Generator(args, options) {
   yeoman.generators.Base.apply(this, arguments);
-
-
-
-  Generator.prototype.initializing = function () {
     this.pkg = require('../package.json');
 
     this.on('end', function () {
@@ -29,7 +25,6 @@ var Generator = module.exports = function Generator(args, options) {
         '\n 7. You are now ready to use your API!  ENJOY!'
         ));
     });
-  };
 
   Generator.prototype.askForAppData = function () {
     var done = this.async();
