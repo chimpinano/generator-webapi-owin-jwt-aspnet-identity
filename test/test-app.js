@@ -17,7 +17,7 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
         .withPrompts({
           applicationName: 'My Application',
           dbServerName: '.\sqlexpress'
-        })
+        }).inTmpDir()
         .on('end', done);
     }.bind(this));
   });
