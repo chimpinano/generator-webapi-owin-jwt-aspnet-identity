@@ -4,9 +4,9 @@ var path = require('path');
 var assert = require('assert');
 var helpers = require('yeoman-generator').test;
 
-describe('generator-webapi-owin-jwt-aspnet-identity', function () {
 
-  before(function (done) {
+
+before(function (done) {
     helpers.run(path.join(__dirname, '../app'))
       .inDir(path.join(__dirname, './tmp'))
       .withPrompts(
@@ -17,6 +17,7 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
       .on('end', done);
   });
 
+describe('generator-webapi-owin-jwt-aspnet-identity', function () {
 
   it('the generator should create all the files', function () {
     var expectedProjectFiles = [
