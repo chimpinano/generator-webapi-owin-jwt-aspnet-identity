@@ -51,9 +51,13 @@ describe('webapi-microsoftowin-jwt-aspnetidentity:app', function () {
   beforeEach(function (done) {
     helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
       if (err) {
-        console.log('Error', err);
-        return err;
+        return done(err);
       }
+
+      this.app = helpers.createGenerator('webapi-owin-jwt-aspnet-identity:app', [
+        '../../app'
+      ]);
+
       helpers.mockPrompt(this.app, {
         'applicationName': 'MyApplication'
       });
@@ -61,7 +65,7 @@ describe('webapi-microsoftowin-jwt-aspnetidentity:app', function () {
         'dbServerName': '.\sqlexpress'
       });
       done();
-    });
+    }.bind(this));
   });
 
   afterEach(function () {
@@ -69,13 +73,8 @@ describe('webapi-microsoftowin-jwt-aspnetidentity:app', function () {
   });
 
   it('should create all of the application files', function (done) {
-    this.app.options['skip-install'] = true;
-    this.app.run({}, function () {
-      assert.file(expectedProjectFiles);
-      done();
-    });
+    assert.file(expectedProjectFiles);
   });
-
 });
 
 
