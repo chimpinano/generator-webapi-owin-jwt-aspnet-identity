@@ -3,9 +3,9 @@
 var path = require('path');
 var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
-var os = require('os');
+var temp = require('temp').track();
 
-
+describe('webapi-microsoftowin-jwt-aspnetidentity:app', function () {
   var expectedProjectFiles = [
     'MyApplication.sln',
     'packages/repositories.conig',
@@ -48,17 +48,34 @@ var os = require('os');
     'MyApplication.API/Web.Release.config'
   ];
 
-
-describe('webapi-microsoftowin-jwt-aspnetidentity:app', function () {
-  before(function (done) {
-    helpers.run(path.join(__dirname, '../app'))      
-      .withPrompts({ applicationName: 'My Application', dbServerName: '.\sqlexpress'})
-      .on('end', done);
+  beforeEach(function (done) {
+    helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
+      if (err) {
+        console.log('Error', err);
+        return err;
+      }
+      helpers.mockPrompt(this.app, {
+        'applicationName': 'MyApplication'
+      });
+      helpers.mockPrompt(this.app, {
+        'dbServerName': '.\sqlexpress'
+      });
+      done();
+    });
   });
 
-  it('should create all solution files', function () {
-    assert.file(expectedProjectFiles);
+  afterEach(function () {
+    temp.cleanup();
   });
+
+  it('should create all of the application files', function (done) {
+    this.app.options['skip-install'] = true;
+    this.app.run({}, function () {
+      assert.file(expectedProjectFiles);
+      done();
+    });
+  });
+
 });
 
 
