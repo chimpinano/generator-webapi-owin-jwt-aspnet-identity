@@ -303,7 +303,7 @@ module.exports = yeoman.generators.Base.extend({
   createOutterFiles: function () {
     this.fs.copyTpl(
       this.templatePath('_app.sln'),
-      this.destinationPath(path.join(this.destinationRoot(), this.appData.solutionName + '.sln')),
+      this.destinationPath(this.appData.solutionName + '.sln'),
       {
         applicationName: this.appData.applicationName,
         apiProjectGuid: this.appData.apiProjectGuid
@@ -311,7 +311,7 @@ module.exports = yeoman.generators.Base.extend({
       );
     this.fs.copyTpl(
       this.templatePath('packages/_repositories.config'),
-      this.destinationPath(path.join(this.destinationRoot(), 'packages/repositories.config')), { applicationName: this.appData.applicationName }
+      this.destinationPath('packages/repositories.config'), { applicationName: this.appData.applicationName }
       );
   }
 });
