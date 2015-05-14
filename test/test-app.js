@@ -6,7 +6,7 @@ var helpers = require('yeoman-generator').test;
 var temp = require('temp').track();
 
 describe('generator-webapi-owin-jwt-aspnet-identity', function () {
-
+ 
 
   beforeEach(function (done) {
     helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
@@ -35,7 +35,7 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
 
   it('should run and create all of the application files', function (done) {
     var expectedProjectFiles = [
-       path.join(this.app.destinationRoot, 'MyApplication.sln'),
+      'MyApplication.sln',
       'packages/repositories.conig',
       'MyApplication.API/AppStart/WebApiConfig.cs',
       'MyApplication.API/Authentication/EmailTemplates/ConfirmEmailAddressEmail.html',
