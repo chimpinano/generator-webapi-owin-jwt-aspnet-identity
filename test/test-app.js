@@ -17,7 +17,7 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
       this.app = helpers.createGenerator('webapi-owin-jwt-aspnet-identity:app', [
         '../../app'
       ]);
-      this.app.options['skip-install'] = true;
+      //this.app.options['skip-install'] = true;
 
       helpers.mockPrompt(this.app, {
         'applicationName': 'My Application'
@@ -33,7 +33,7 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
 
   it('should run and create all of the application files', function (done) {
     var expectedProjectFiles = [
-      path.join(this.app.destinationRoot(), 'MyApplication.sln'),
+      'MyApplication.sln',
       'packages/repositories.conig',
       'MyApplication.API/AppStart/WebApiConfig.cs',
       'MyApplication.API/Authentication/EmailTemplates/ConfirmEmailAddressEmail.html',
@@ -75,7 +75,6 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
     ];
     this.app.run(function () {
       assert.file(expectedProjectFiles);
-      done();
     });
   });
 });
