@@ -29,11 +29,11 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
     }.bind(this));
   });
 
-  afterEach(function () {
+  after(function () {
     temp.cleanup();
   });
 
-  it('the generator should have created all the files', function (done) {
+  it('the generator should run', function (done) {
     var expectedProjectFiles = [
       'MyApplication.sln',
       'packages/repositories.conig',
@@ -75,9 +75,11 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
       'MyApplication.API/Web.Debug.config',
       'MyApplication.API/Web.Release.config'
     ];
-    this.app.run({}, function () {
+    this.app.run(function () {
+      it('should have all files', function () {
         assert.file(expectedProjectFiles);
         done();
+      });
     });
   });
 });
