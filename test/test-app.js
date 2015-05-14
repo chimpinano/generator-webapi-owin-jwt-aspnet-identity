@@ -7,7 +7,7 @@ var temp = require('temp').track();
 
 describe('generator-webapi-owin-jwt-aspnet-identity', function () {
 
-  beforeEach(function (done) {
+  before(function (done) {
     helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
       if (err) {
         console.log('Error', err);
