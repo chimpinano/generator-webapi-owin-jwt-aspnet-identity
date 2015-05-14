@@ -4,21 +4,18 @@ var path = require('path');
 var assert = require('assert');
 var helpers = require('yeoman-generator').test;
 
-
-
 before(function (done) {
-    helpers.run(path.join(__dirname, '../app'))
-      .inDir(path.join(__dirname, './tmp'))
-      .withPrompts(
-      {
-        applicationName: 'My Application',
-        dbServerName: '.\sqlexpress'
-      })
-      .on('end', done);
-  });
+  helpers.run(path.join(__dirname, '../app'))
+    .inDir(path.join(__dirname, './tmp'))
+    .withPrompts(
+    {
+      applicationName: 'My Application',
+      dbServerName: '.\sqlexpress'
+    })
+    .on('end', done);
+});
 
 describe('generator-webapi-owin-jwt-aspnet-identity', function () {
-
   it('the generator should create all the files', function () {
     var expectedProjectFiles = [
       'MyApplication.sln',
