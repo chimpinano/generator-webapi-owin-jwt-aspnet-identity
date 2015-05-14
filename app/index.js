@@ -84,7 +84,8 @@ module.exports = yeoman.generators.Base.extend({
     mkdirp(this.authenticationDirectory);
     mkdirp(this.emailTemplatesDirectory);
     mkdirp(this.autoMappingDirectory);
-    mkdirp(this.controllersDirectory);
+    mkdirp(this.controllersDirectory);    
+    mkdirp(this.extensionsDirectory);
     mkdirp(this.exceptionsDirectory);
     mkdirp(this.filtersDirectory);
     mkdirp(this.migrationsDirectory);
