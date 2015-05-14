@@ -12,24 +12,18 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
         console.log('Error', err);
         return err;
       }
-      this.app = helpers.createGenerator('webapi-owin-jwt-aspnet-identity:app', [
-        '../../app'
-      ]);
-      this.app.options['skip-install'] = false;
 
-      helpers.mockPrompt(this.app, {
-        'applicationName': 'My Application'
-      });
-      helpers.mockPrompt(this.app, {
-        'dbServerName': '.\sqlexpress'
-      });
-      this.app.run().on('end', done);
+      helpers.run(path.join(__dirname, '../../app'))
+        .withPrompts({
+        applicationName: 'My Application',
+        dbServerName: '.\sqlexpress'
+      }).on('end', done);
     }.bind(this));
   });
 
   it('the generator should create all the files', function (done) {
     var expectedProjectFiles = [
-      path.join(this.app.destinationPath(), 'MyApplication.sln'),
+      'MyApplication.sln',
       'packages/repositories.conig',
       'MyApplication.API/AppStart/WebApiConfig.cs',
       'MyApplication.API/Authentication/EmailTemplates/ConfirmEmailAddressEmail.html',
@@ -70,6 +64,7 @@ describe('generator-webapi-owin-jwt-aspnet-identity', function () {
       'MyApplication.API/Web.Release.config'
     ];
     assert.file(expectedProjectFiles);
+    done();
   });
 });
 
