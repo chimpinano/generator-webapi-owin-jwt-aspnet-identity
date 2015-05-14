@@ -307,7 +307,8 @@ module.exports = yeoman.generators.Base.extend({
       this.destinationPath(this.appData.solutionName + '.sln'),
       {
         applicationName: this.appData.applicationName,
-        apiProjectGuid: this.appData.apiProjectGuid
+        apiProjectGuid: this.appData.apiProjectGuid,
+        applicationFoler: this.appData.applicationFolder
       }
       );
     this.fs.copyTpl(
