@@ -5,7 +5,7 @@
 [![NPM downloads](http://img.shields.io/npm/dm/generator-webapi-owin-jwt-aspnet-identity.svg?style=flat)](http://npmjs.org/generator-webapi-owin-jwt-aspnet-identity)
 [![Dependency Status](http://img.shields.io/david/bizcasfri/generator-webapi-owin-jwt-aspnet-identity.svg?style=flat)](https://david-dm.org/bizcasfri/generator-webapi-owin-jwt-aspnet-identity)
 
-#Generate an ASP.NET Web API with OAuth JSON Web Tokens Authentication and ASP.NET Identity
+# Generate an ASP.NET Web API with OAuth JSON Web Tokens Authentication and ASP.NET Identity #
 
 This generator will provide you with a fully functional Web API application that has implemented OAuth JSON Web Token and ASP.NET Identity.  This is a [Yeoman](http://yeoman.io/ "Yeoman") generator.  You will need NPM installed on your machine to generate the API. You can get npm by installing [nodeJS](https://nodejs.org/download/ "nodeJS")
 
@@ -43,7 +43,7 @@ After answering the questions, the entire API solution and project will be creat
 
 Once the restore is finished the window should look something like this:
 
-![nuget restore finished](https://raw.githubusercontent.com/bizcasfri/generator-webapi-owin-jwt-aspnet-identity/master/readmeimages/nugetrestorefinished.png)
+![NuGet restore finished](https://raw.githubusercontent.com/bizcasfri/generator-webapi-owin-jwt-aspnet-identity/master/readmeimages/nugetrestorefinished.png)
 
 Now you can build the solution!  Next we need to do some database work.  In the Visual Studio menu to to View>Other Windows>Package Manager Console.  In the console, type the following command:
 
