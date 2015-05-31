@@ -1,6 +1,6 @@
 {
   "name": "generator-webapi-owin-jwt-aspnet-identity",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Generates an ASP.NET Web API application with OAuth JWT implemented",
   "license": "MIT",
   "main": "app/index.js",
@@ -17,8 +17,8 @@
     "url": "https://github.com/bizcasfri"
   },
   "engines": {
-		"node": ">=0.10.0"
-	},
+    "node": ">=0.10.0"
+  },
   "scripts": {
     "test": "mocha"
   },
@@ -44,8 +44,8 @@
     "mkdirp": "^0.5.0"
   },
   "devDependencies": {
-		"assert": "~1.1.1",
-		"mocha": "~1.21.3",
-		"temp": "~0.8.0"
+    "assert": "~1.1.1",
+    "mocha": "~1.21.3",
+    "temp": "~0.8.0"
   }
 }
