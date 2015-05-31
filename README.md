@@ -1,3 +1,5 @@
+
+
 ![build image](https://travis-ci.org/bizcasfri/generator-webapi-owin-jwt-aspnet-identity.svg?branch=master)
 [![NPM version](http://img.shields.io/npm/v/generator-webapi-owin-jwt-aspnet-identity.svg?style=flat)](http://npmjs.org/generator-webapi-owin-jwt-aspnet-identity)
 [![NPM downloads](http://img.shields.io/npm/dm/generator-webapi-owin-jwt-aspnet-identity.svg?style=flat)](http://npmjs.org/generator-webapi-owin-jwt-aspnet-identity)
@@ -37,11 +39,11 @@ After answering the questions, the entire API solution and project will be creat
 2. Right click on references in the project, and select Manage NuGet Packages
 3. In the NuGet package window you will see a yellow bar at the top.  Click on the restore button on the right side of the yellow bar.  This will restore all of the project dependencies.
 
-![NuGet restore](https://github.com/bizcasfri/generator-webapi-owin-jwt-aspnet-identity/blob/master/readmeimages/nugetrestore.png)
+![NuGet restore](https://raw.githubusercontent.com/bizcasfri/generator-webapi-owin-jwt-aspnet-identity/master/readmeimages/nugetrestore.png)
 
 Once the restore is finished the window should look something like this:
 
-![nuget restore finished](https://github.com/bizcasfri/generator-webapi-owin-jwt-aspnet-identity/blob/master/readmeimages/nugetrestorefinished.png)
+![nuget restore finished](https://raw.githubusercontent.com/bizcasfri/generator-webapi-owin-jwt-aspnet-identity/master/readmeimages/nugetrestorefinished.png)
 
 Now you can build the solution!  Next we need to do some database work.  In the Visual Studio menu to to View>Other Windows>Package Manager Console.  In the console, type the following command:
 
