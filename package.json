@@ -1,6 +1,6 @@
 {
   "name": "generator-webapi-owin-jwt-aspnet-identity",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Generates an ASP.NET Web API application with OAuth JWT implemented",
   "license": "MIT",
   "main": "app/index.js",
