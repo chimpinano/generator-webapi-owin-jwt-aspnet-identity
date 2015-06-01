@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Generator-webapi-owin-jwt-aspnet-identity by bizcasfri</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Generator-webapi-owin-jwt-aspnet-identity</h1>
+      <h2 class="project-tagline">Generate an ASP.NET Web API with OAuth JSON Web Tokens Authentication and ASP.NET Identity</h2>
+      <a href="https://github.com/bizcasfri/generator-webapi-owin-jwt-aspnet-identity" class="btn">View on GitHub</a>
+      <a href="https://github.com/bizcasfri/generator-webapi-owin-jwt-aspnet-identity/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/bizcasfri/generator-webapi-owin-jwt-aspnet-identity/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <p><img src="https://travis-ci.org/bizcasfri/generator-webapi-owin-jwt-aspnet-identity.svg?branch=master" alt="build image">
+<a href="http://npmjs.org/generator-webapi-owin-jwt-aspnet-identity"><img src="http://img.shields.io/npm/v/generator-webapi-owin-jwt-aspnet-identity.svg?style=flat" alt="NPM version"></a>
+<a href="http://npmjs.org/generator-webapi-owin-jwt-aspnet-identity"><img src="http://img.shields.io/npm/dm/generator-webapi-owin-jwt-aspnet-identity.svg?style=flat" alt="NPM downloads"></a>
+<a href="https://david-dm.org/bizcasfri/generator-webapi-owin-jwt-aspnet-identity"><img src="http://img.shields.io/david/bizcasfri/generator-webapi-owin-jwt-aspnet-identity.svg?style=flat" alt="Dependency Status"></a></p>
+
+<hr>
+
+<h2>
+<a id="generates-an-aspnet-web-api-that-implements" class="anchor" href="#generates-an-aspnet-web-api-that-implements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generates an ASP.NET Web API that implements:</h2>
+
+<ul>
+<li>
+<strong>OAuth</strong> </li>
+<li>
+<strong>JSON Web Tokens Authentication</strong> </li>
+<li><strong>ASP.NET Identity</strong></li>
+</ul>
+
+<hr>
+
+<p>This generator will provide you with a fully functional Web API application that has implemented OAuth JSON Web Token and ASP.NET Identity.  This is a <a href="http://yeoman.io/" title="Yeoman">Yeoman</a> generator.  You will need NPM installed on your machine to generate the API. You can get npm by installing <a href="https://nodejs.org/download/" title="nodeJS">nodeJS</a></p>
+
+<p>Once you have npm installed you will need to install Yeoman. Open a command prompt and enter the following command:</p>
+
+<pre><code>npm install -g yo
+</code></pre>
+
+<p>You now have Yeoman installed globally on your computer.  Next you need to install this generator, again, open a command prompt and type this command:</p>
+
+<pre><code>npm install -g generator-webapi-owin-jwt-aspnet-identity
+</code></pre>
+
+<p>You now have the generator installed on your computer.  Using the command prompt, navigate to your development working directory for this project.  Once you are there, type this command:</p>
+
+<pre><code>yo webapi-owin-jwt-aspnet-identity
+</code></pre>
+
+<p>This will kick off the installation.  During the installation, you will be asked two questions</p>
+
+<ol>
+<li>What is the name of your application</li>
+<li>What is the name of the SQL Server instance on your computer</li>
+</ol>
+
+<p>After answering the questions, the entire API solution and project will be created.  There are a few more things you will need to do before you are finished.</p>
+
+<ol>
+<li>Open the solution</li>
+<li>Right click on references in the project, and select Manage NuGet Packages</li>
+<li>In the NuGet package window you will see a yellow bar at the top.  Click on the restore button on the right side of the yellow bar.  This will restore all of the project dependencies.</li>
+</ol>
+
+<p><img src="https://raw.githubusercontent.com/bizcasfri/generator-webapi-owin-jwt-aspnet-identity/master/readmeimages/nugetrestore.png" alt="NuGet restore"></p>
+
+<p>Once the restore is finished the window should look something like this:</p>
+
+<p><img src="https://raw.githubusercontent.com/bizcasfri/generator-webapi-owin-jwt-aspnet-identity/master/readmeimages/nugetrestorefinished.png" alt="NuGet restore finished"></p>
+
+<p>Now you can build the solution!  Next we need to do some database work.  In the Visual Studio menu to to View&gt;Other Windows&gt;Package Manager Console.  In the console, type the following command:</p>
+
+<pre><code>add-migration "database creation"
+</code></pre>
+
+<p>This will create a migration file so you can now update/create your database by running this command:</p>
+
+<pre><code>update-database
+</code></pre>
+
+<p>Once this command is finished, you can open SQL Server Management Studio and see that the database was created.</p>
+
+<p><strong>If you have any issues during these steps it is most likely related to having the wrong database server instance name (which you entered during the installation).  Check the connection string in the Web.config to make sure the instance name is correct</strong></p>
+
+<p>Now there are a few application settings that will need to be changed for enabling email notifications.  In the appSettings section of the Web.config, you will need to change the following settings as needed.</p>
+
+<pre><code>&lt;add key="emailHost" value="localhost" /&gt;
+&lt;add key="supportEmailAddress" value="support@yourapp.com" /&gt;
+&lt;add key="supportEmailName" value="Customer Support" /&gt;
+&lt;add key="emailUser" value="user@yourapp.com" /&gt;
+&lt;add key="emailPassword" value="yourpassword" /&gt;
+</code></pre>
+
+<p>If you don't have an SMTP server, you can use <a href="https://smtp4dev.codeplex.com/" title="SMTP4Dev">SMTP4Dev</a>.  While it is running it will attach to port 25 and intercept emails coming from your development projects.  It has a user interface and you can open the emails.</p>
+
+<p>You are ready to start testing your API.  I typically use Postman.  I have created a <a href="https://github.com/bizcasfri/generator-webapi-owin-jwt-aspnet-identity/blob/master/postmanapitests.json" title="JSON Postman file">JSON Postman file</a> that you can import into Postman to get your started.  It is based on the functionality of the API you just installed.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/bizcasfri/generator-webapi-owin-jwt-aspnet-identity">Generator-webapi-owin-jwt-aspnet-identity</a> is maintained by <a href="https://github.com/bizcasfri">bizcasfri</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-61909913-4");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
+
